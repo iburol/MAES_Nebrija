@@ -1,0 +1,471 @@
+<style>
+  .inicio-box {
+    font-family: Arial, sans-serif;
+    width: 85%;
+    max-width: 900px;
+    margin: 24px auto;
+    padding: 26px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffffff, #f4fbff);
+    border: 1px solid #d6eaf5;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    color: #1f2d3d;
+  }
+
+  .inicio-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .inicio-icono {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .inicio-titulo h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #003b73;
+  }
+
+  .inicio-titulo p {
+    margin: 4px 0 0;
+    color: #007c89;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .inicio-texto {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 18px 0;
+  }
+
+  .inicio-destacado {
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin: 24px 0;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .inicio-destacado strong {
+    color: #003b73;
+  }
+
+  .inicio-pregunta {
+    margin: 26px 0;
+    padding: 22px;
+    background-color: #fff8e1;
+    border-left: 6px solid #ff9800;
+    border-radius: 14px;
+    text-align: center;
+  }
+
+  .inicio-pregunta h3 {
+    margin-top: 0;
+    color: #8a5a00;
+    font-size: 22px;
+  }
+
+  .inicio-pregunta p {
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #1f2d3d;
+    font-weight: bold;
+  }
+
+  .inicio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .inicio-card {
+    background: white;
+    border: 1px solid #dbeaf2;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  .inicio-card h3 {
+    margin-top: 0;
+    color: #005b96;
+    font-size: 19px;
+  }
+
+  .inicio-card p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .inicio-lista {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+    font-size: 15.5px;
+  }
+
+  .inicio-ruta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin: 24px 0;
+  }
+
+  .inicio-ruta-card {
+    background: white;
+    border: 1px solid #dbeaf2;
+    border-radius: 14px;
+    padding: 14px 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  .inicio-ruta-num {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .inicio-ruta-card h4 {
+    margin: 4px 0 6px;
+    color: #005b96;
+    font-size: 15.5px;
+  }
+
+  .inicio-ruta-card p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+
+  .inicio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 24px;
+  }
+
+  .inicio-tag {
+    display: inline-block;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background-color: #eaf7fb;
+    color: #005b96;
+    border: 1px solid #c9e7ef;
+    font-size: 13.5px;
+    font-weight: bold;
+  }
+
+  .inicio-tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 14px;
+    margin-bottom: 24px;
+  }
+
+  .inicio-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    font-size: 15.5px;
+    background-color: white;
+  }
+
+  .inicio-tabla thead {
+    background-color: #003b73;
+    color: white;
+  }
+
+  .inicio-tabla th,
+  .inicio-tabla td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5eef4;
+    vertical-align: top;
+  }
+
+  .inicio-tabla tbody tr:nth-child(even) {
+    background-color: #f6fbfe;
+  }
+
+  .inicio-tabla tbody tr:hover {
+    background-color: #eaf6fb;
+  }
+
+  .inicio-etiqueta {
+    font-weight: bold;
+    color: #005b96;
+  }
+
+  .inicio-cierre {
+    margin-top: 24px;
+    padding: 20px;
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .inicio-boton-contenedor {
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  .inicio-boton {
+    display: inline-block;
+    padding: 14px 22px;
+    margin: 8px;
+    background-color: #003b73;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 59, 115, 0.25);
+  }
+
+  .inicio-boton:hover {
+    background-color: #005b96;
+  }
+
+  .inicio-boton-secundario {
+    background-color: #007c89;
+  }
+
+  .inicio-boton-secundario:hover {
+    background-color: #0097a7;
+  }
+
+  @media (max-width: 760px) {
+    .inicio-box {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .inicio-header {
+      align-items: flex-start;
+    }
+
+    .inicio-titulo h2 {
+      font-size: 24px;
+    }
+
+    .inicio-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .inicio-ruta {
+      grid-template-columns: 1fr;
+    }
+
+    .inicio-pregunta p {
+      font-size: 18px;
+    }
+
+    .inicio-boton {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+</style>
+
+<section class="inicio-box">
+  <div class="inicio-header">
+    <div class="inicio-icono">&lt;/&gt;</div>
+    <div class="inicio-titulo">
+      <h2>Bienvenido/a a la WebQuest “Del Sketch al C”</h2>
+      <p>Arduino UNO · Programación estructurada · ANSI C</p>
+    </div>
+  </div>
+
+  <p class="inicio-texto">
+    En esta WebQuest investigarás cómo funcionan algunos ejemplos básicos de
+    <strong>Arduino UNO</strong> y los transformarás en programas escritos en
+    <strong>C estructurado</strong>.
+  </p>
+
+  <p class="inicio-texto">
+    El objetivo no es solo copiar código, sino comprender el algoritmo, analizar
+    las entradas y salidas del sistema, relacionar el programa con el hardware,
+    documentar el funcionamiento y comprobar el resultado mediante pruebas.
+  </p>
+
+  <div class="inicio-destacado">
+    <strong>Contexto de la propuesta:</strong>
+    esta WebQuest está diseñada para el módulo de <strong>Informática industrial</strong>
+    del Ciclo Formativo de Grado Superior en <strong>Automatización y Robótica Industrial</strong>.
+    Arduino UNO se utilizará como plataforma didáctica para trabajar programación en C,
+    periféricos del ATmega328P, sensores, actuadores, temporizadores, interrupciones y comunicación serie.
+  </div>
+
+  <div class="inicio-pregunta">
+    <h3>Pregunta guía</h3>
+    <p>
+      ¿Cómo podemos transformar ejemplos básicos de Arduino UNO en programas
+      estructurados en C, comprendiendo tanto el funcionamiento del hardware
+      como la lógica del programa?
+    </p>
+  </div>
+
+  <div class="inicio-grid">
+    <div class="inicio-card">
+      <h3>¿Qué vas a aprender?</h3>
+      <ul class="inicio-lista">
+        <li>Analizar ejemplos de Arduino UNO desde un enfoque técnico.</li>
+        <li>Identificar entradas, salidas, componentes, pines y puertos.</li>
+        <li>Diseñar algoritmos antes de programar.</li>
+        <li>Interpretar código en C aplicado al ATmega328P.</li>
+        <li>Probar, depurar y documentar sistemas programables.</li>
+      </ul>
+    </div>
+
+    <div class="inicio-card">
+      <h3>¿Qué vas a entregar?</h3>
+      <ul class="inicio-lista">
+        <li>Fichas técnicas de las actividades realizadas.</li>
+        <li>Algoritmos o pseudocódigo.</li>
+        <li>Código en C comentado.</li>
+        <li>Evidencias de funcionamiento.</li>
+        <li>Registro de errores y soluciones.</li>
+        <li>Memoria técnica final y defensa del trabajo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="color:#003b73; margin-top: 26px;">Ruta de la WebQuest</h3>
+
+  <div class="inicio-ruta">
+    <div class="inicio-ruta-card">
+      <div class="inicio-ruta-num">1</div>
+      <h4>Introducción</h4>
+      <p>Comprender el reto y la pregunta guía.</p>
+    </div>
+
+    <div class="inicio-ruta-card">
+      <div class="inicio-ruta-num">2</div>
+      <h4>Actividades</h4>
+      <p>Consultar los retos técnicos propuestos.</p>
+    </div>
+
+    <div class="inicio-ruta-card">
+      <div class="inicio-ruta-num">3</div>
+      <h4>Proceso</h4>
+      <p>Seguir las fases de trabajo del equipo.</p>
+    </div>
+
+    <div class="inicio-ruta-card">
+      <div class="inicio-ruta-num">4</div>
+      <h4>Evaluación</h4>
+      <p>Revisar rúbricas, evidencias y criterios.</p>
+    </div>
+  </div>
+
+  <h3 style="color:#003b73;">Conceptos principales</h3>
+
+  <div class="inicio-tags">
+    <span class="inicio-tag">Arduino UNO</span>
+    <span class="inicio-tag">ATmega328P</span>
+    <span class="inicio-tag">ANSI C</span>
+    <span class="inicio-tag">Programación estructurada</span>
+    <span class="inicio-tag">ADC</span>
+    <span class="inicio-tag">PWM</span>
+    <span class="inicio-tag">TIMER0</span>
+    <span class="inicio-tag">TIMER1</span>
+    <span class="inicio-tag">INT0</span>
+    <span class="inicio-tag">USART</span>
+    <span class="inicio-tag">LCD</span>
+    <span class="inicio-tag">Depuración</span>
+    <span class="inicio-tag">Documentación técnica</span>
+  </div>
+
+  <h3 style="color:#003b73;">Organización de la WebQuest</h3>
+
+  <div class="inicio-tabla-contenedor">
+    <table class="inicio-tabla">
+      <thead>
+        <tr>
+          <th>Sección</th>
+          <th>Qué encontrarás</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="inicio-etiqueta">Introducción</td>
+          <td>Presentación del reto y sentido de la WebQuest.</td>
+        </tr>
+        <tr>
+          <td class="inicio-etiqueta">Actividades</td>
+          <td>Retos técnicos basados en ejemplos de Arduino UNO programados en C.</td>
+        </tr>
+        <tr>
+          <td class="inicio-etiqueta">Proceso</td>
+          <td>Fases de trabajo: organización, análisis, algoritmo, programación, pruebas y documentación.</td>
+        </tr>
+        <tr>
+          <td class="inicio-etiqueta">Laboratorios</td>
+          <td>Organización práctica de los montajes, evidencias y retos de laboratorio.</td>
+        </tr>
+        <tr>
+          <td class="inicio-etiqueta">Recursos</td>
+          <td>Documentación, enlaces, herramientas, plantillas y materiales de apoyo.</td>
+        </tr>
+        <tr>
+          <td class="inicio-etiqueta">Evaluación</td>
+          <td>Rúbrica, ponderación, lista de cotejo, autoevaluación y coevaluación.</td>
+        </tr>
+        <tr>
+          <td class="inicio-etiqueta">Conclusión</td>
+          <td>Reflexión final sobre el aprendizaje y la aplicación técnica del proyecto.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="inicio-cierre">
+    <strong>Reto inicial:</strong> comenzarás analizando ejemplos aparentemente sencillos,
+    pero el objetivo final será ir más allá del sketch: comprender cómo el código en C
+    interactúa con registros, puertos, sensores, actuadores, temporizadores e interrupciones.
+  </div>
+
+  <div class="inicio-boton-contenedor">
+    <a class="inicio-boton" href="https://sites.google.com/view/delsketchalc/introducci%C3%B3n" target="_blank" rel="noopener">
+      Comenzar
+    </a>
+
+    <a class="inicio-boton inicio-boton-secundario" href="https://sites.google.com/view/delsketchalc/actividades" target="_blank" rel="noopener">
+      Ver actividades
+    </a>
+
+    <a class="inicio-boton inicio-boton-secundario" href="https://sites.google.com/view/delsketchalc/proceso" target="_blank" rel="noopener">
+      Ver proceso
+    </a>
+  </div>
+</section>
