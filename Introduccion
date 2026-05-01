@@ -1,0 +1,377 @@
+<style>
+  .intro-box {
+    font-family: Arial, sans-serif;
+    width: 85%;
+    max-width: 900px;
+    margin: 24px auto;
+    padding: 26px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffffff, #f4fbff);
+    border: 1px solid #d6eaf5;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    color: #1f2d3d;
+  }
+
+  .intro-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .intro-icono {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .intro-titulo h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #003b73;
+  }
+
+  .intro-titulo p {
+    margin: 4px 0 0;
+    color: #007c89;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .intro-texto {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 18px 0;
+  }
+
+  .intro-destacado {
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin: 24px 0;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .intro-destacado strong {
+    color: #003b73;
+  }
+
+  .intro-pregunta {
+    margin: 26px 0;
+    padding: 22px;
+    background-color: #fff8e1;
+    border-left: 6px solid #ff9800;
+    border-radius: 14px;
+    text-align: center;
+  }
+
+  .intro-pregunta h3 {
+    margin-top: 0;
+    color: #8a5a00;
+    font-size: 22px;
+  }
+
+  .intro-pregunta p {
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #1f2d3d;
+    font-weight: bold;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .intro-card {
+    background: white;
+    border: 1px solid #dbeaf2;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  .intro-card h3 {
+    margin-top: 0;
+    color: #005b96;
+    font-size: 19px;
+  }
+
+  .intro-card p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .intro-lista {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+    font-size: 15.5px;
+  }
+
+  .intro-flujo {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    margin: 24px 0;
+  }
+
+  .intro-flujo-card {
+    background: white;
+    border: 1px solid #dbeaf2;
+    border-radius: 14px;
+    padding: 14px 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  .intro-flujo-num {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .intro-flujo-card h4 {
+    margin: 4px 0 6px;
+    color: #005b96;
+    font-size: 15.5px;
+  }
+
+  .intro-flujo-card p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+
+  .intro-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 24px;
+  }
+
+  .intro-tag {
+    display: inline-block;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background-color: #eaf7fb;
+    color: #005b96;
+    border: 1px solid #c9e7ef;
+    font-size: 13.5px;
+    font-weight: bold;
+  }
+
+  .intro-reto {
+    margin-top: 24px;
+    padding: 20px;
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    border-radius: 12px;
+  }
+
+  .intro-reto h3 {
+    margin-top: 0;
+    color: #003b73;
+  }
+
+  .intro-reto p {
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .intro-boton-contenedor {
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  .intro-boton {
+    display: inline-block;
+    padding: 14px 22px;
+    background-color: #003b73;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 59, 115, 0.25);
+  }
+
+  .intro-boton:hover {
+    background-color: #005b96;
+  }
+
+  @media (max-width: 760px) {
+    .intro-box {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .intro-header {
+      align-items: flex-start;
+    }
+
+    .intro-titulo h2 {
+      font-size: 24px;
+    }
+
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .intro-flujo {
+      grid-template-columns: 1fr;
+    }
+
+    .intro-pregunta p {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<section class="intro-box">
+  <div class="intro-header">
+    <div class="intro-icono">&lt;/&gt;</div>
+    <div class="intro-titulo">
+      <h2>Introducción</h2>
+      <p>Del ejemplo guiado a la programación razonada</p>
+    </div>
+  </div>
+
+  <p class="intro-texto">
+    Todo programa que hace funcionar un dispositivo electrónico esconde una pequeña historia:
+    una entrada que se lee, una decisión que se toma y una salida que responde.
+  </p>
+
+  <p class="intro-texto">
+    En Arduino UNO solemos empezar con ejemplos sencillos: encender un LED, leer un pulsador,
+    controlar una señal, generar un sonido o repetir una secuencia. A simple vista parecen
+    programas muy básicos, pero detrás de cada sketch aparecen conceptos esenciales de
+    programación: variables, estructuras de control, funciones, temporización, modularidad
+    y relación directa con el hardware.
+  </p>
+
+  <div class="intro-destacado">
+    <strong>En esta WebQuest vamos a abrir el “capó” de esos ejemplos.</strong>
+    <br><br>
+    No se trata solo de hacer que el circuito funcione. El objetivo será comprender
+    qué ocurre en cada línea, traducir la lógica del sketch a un algoritmo claro y
+    reescribir la solución utilizando programación estructurada en C.
+  </div>
+
+  <div class="intro-grid">
+    <div class="intro-card">
+      <h3>¿Qué vais a investigar?</h3>
+      <p>
+        Analizaréis ejemplos de Arduino UNO para identificar qué componentes intervienen,
+        qué entradas y salidas se utilizan, qué periféricos del ATmega328P aparecen y
+        cómo el programa en C controla el comportamiento del sistema.
+      </p>
+    </div>
+
+    <div class="intro-card">
+      <h3>¿Cómo vais a trabajar?</h3>
+      <p>
+        Trabajaréis como un equipo técnico: analizaréis el problema, diseñaréis el algoritmo,
+        interpretaréis el código, realizaréis pruebas, corregiréis errores y documentaréis
+        las evidencias del proceso.
+      </p>
+    </div>
+  </div>
+
+  <h3 style="color:#003b73; margin-top: 26px;">Del sketch al C: recorrido de trabajo</h3>
+
+  <div class="intro-flujo">
+    <div class="intro-flujo-card">
+      <div class="intro-flujo-num">1</div>
+      <h4>Observar</h4>
+      <p>Comprender qué hace el ejemplo original.</p>
+    </div>
+
+    <div class="intro-flujo-card">
+      <div class="intro-flujo-num">2</div>
+      <h4>Analizar</h4>
+      <p>Identificar entradas, salidas, pines y periféricos.</p>
+    </div>
+
+    <div class="intro-flujo-card">
+      <div class="intro-flujo-num">3</div>
+      <h4>Diseñar</h4>
+      <p>Representar la lógica mediante algoritmo o pseudocódigo.</p>
+    </div>
+
+    <div class="intro-flujo-card">
+      <div class="intro-flujo-num">4</div>
+      <h4>Programar</h4>
+      <p>Interpretar o escribir código en C estructurado.</p>
+    </div>
+
+    <div class="intro-flujo-card">
+      <div class="intro-flujo-num">5</div>
+      <h4>Comprobar</h4>
+      <p>Probar, depurar y documentar el funcionamiento.</p>
+    </div>
+  </div>
+
+  <h3 style="color:#003b73;">Conceptos que aparecerán durante la WebQuest</h3>
+
+  <div class="intro-tags">
+    <span class="intro-tag">Arduino UNO</span>
+    <span class="intro-tag">ATmega328P</span>
+    <span class="intro-tag">ANSI C</span>
+    <span class="intro-tag">Entradas digitales</span>
+    <span class="intro-tag">Salidas digitales</span>
+    <span class="intro-tag">ADC</span>
+    <span class="intro-tag">PWM</span>
+    <span class="intro-tag">TIMER0</span>
+    <span class="intro-tag">TIMER1</span>
+    <span class="intro-tag">INT0</span>
+    <span class="intro-tag">USART</span>
+    <span class="intro-tag">LCD</span>
+    <span class="intro-tag">Depuración</span>
+    <span class="intro-tag">Documentación técnica</span>
+  </div>
+
+  <div class="intro-pregunta">
+    <h3>Pregunta guía</h3>
+    <p>
+      ¿Podemos transformar ejemplos básicos de Arduino UNO en programas en C
+      claros, estructurados y bien documentados?
+    </p>
+  </div>
+
+  <div class="intro-reto">
+    <h3>El reto</h3>
+    <p>
+      Cada práctica os acercará un poco más a la forma de trabajar en sistemas
+      automatizados reales, donde programar no significa copiar instrucciones,
+      sino entender, organizar, comprobar y justificar una solución técnica.
+    </p>
+  </div>
+
+  <div class="intro-boton-contenedor">
+    <a class="intro-boton" href="https://sites.google.com/view/delsketchalc/actividades" target="_blank" rel="noopener">
+      Comenzar el reto
+    </a>
+  </div>
+</section>
