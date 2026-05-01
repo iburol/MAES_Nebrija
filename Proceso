@@ -1,0 +1,1403 @@
+<style>
+  .proceso-box {
+    font-family: Arial, sans-serif;
+    width: 85%;
+    max-width: 900px;
+    margin: 24px auto;
+    padding: 26px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffffff, #f4fbff);
+    border: 1px solid #d6eaf5;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    color: #1f2d3d;
+  }
+
+  .proceso-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .proceso-icono {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .proceso-titulo h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #003b73;
+  }
+
+  .proceso-titulo p {
+    margin: 4px 0 0;
+    color: #007c89;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .proceso-texto {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 18px 0;
+  }
+
+  .proceso-destacado {
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin: 24px 0;
+    font-size: 16.5px;
+    line-height: 1.6;
+  }
+
+  .proceso-destacado strong {
+    color: #003b73;
+  }
+
+  .proceso-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .proceso-card {
+    background: white;
+    border: 1px solid #dbeaf2;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  .proceso-card h3 {
+    margin-top: 0;
+    color: #005b96;
+    font-size: 19px;
+  }
+
+  .proceso-card p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .proceso-lista {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+    font-size: 15.5px;
+  }
+
+  .proceso-bloque-titulo {
+    color: #003b73;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    font-size: 23px;
+  }
+
+  .proceso-fase {
+    background: #ffffff;
+    border: 1px solid #dbeaf2;
+    border-radius: 16px;
+    margin: 16px 0;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+
+  .proceso-fase summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #ffffff, #f6fbfe);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .proceso-fase summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .proceso-numero {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+    font-size: 20px;
+  }
+
+  .proceso-summary-text {
+    flex: 1;
+  }
+
+  .proceso-summary-text h3 {
+    margin: 0;
+    color: #003b73;
+    font-size: 21px;
+  }
+
+  .proceso-summary-text p {
+    margin: 4px 0 0;
+    color: #007c89;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .proceso-flecha {
+    color: #005b96;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .proceso-contenido {
+    padding: 20px;
+    border-top: 1px solid #e5eef4;
+  }
+
+  .proceso-subtitulo {
+    color: #003b73;
+    margin: 20px 0 10px;
+    font-size: 18px;
+  }
+
+  .proceso-tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 14px;
+    margin-bottom: 24px;
+  }
+
+  .proceso-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    font-size: 15.5px;
+    background-color: white;
+  }
+
+  .proceso-tabla thead {
+    background-color: #003b73;
+    color: white;
+  }
+
+  .proceso-tabla th,
+  .proceso-tabla td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5eef4;
+    vertical-align: top;
+  }
+
+  .proceso-tabla tbody tr:nth-child(even) {
+    background-color: #f6fbfe;
+  }
+
+  .proceso-tabla tbody tr:hover {
+    background-color: #eaf6fb;
+  }
+
+  .proceso-etiqueta {
+    font-weight: bold;
+    color: #005b96;
+  }
+
+  .proceso-pasos {
+    counter-reset: pasos;
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 24px;
+  }
+
+  .proceso-pasos li {
+    counter-increment: pasos;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 15px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border-left: 5px solid #0097a7;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
+  .proceso-pasos li::before {
+    content: counter(pasos);
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .proceso-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 24px;
+  }
+
+  .proceso-checklist li {
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border-left: 5px solid #0097a7;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
+  .proceso-checklist li::before {
+    content: "✓";
+    display: inline-block;
+    margin-right: 10px;
+    color: #007c89;
+    font-weight: bold;
+  }
+
+  .proceso-codigo {
+    background-color: #1f2d3d;
+    color: #f4f8fb;
+    padding: 18px;
+    border-radius: 14px;
+    overflow-x: auto;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 14px 0 24px;
+    white-space: pre-wrap;
+  }
+
+  .proceso-aviso {
+    margin: 18px 0 24px;
+    padding: 16px 18px;
+    background-color: #fff8e1;
+    border-left: 6px solid #ff9800;
+    border-radius: 12px;
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+
+  .proceso-producto {
+    margin-top: 28px;
+    padding: 22px;
+    background: linear-gradient(135deg, #ffffff, #f6fbfe);
+    border: 1px solid #dbeaf2;
+    border-radius: 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  }
+
+  .proceso-producto h3 {
+    margin-top: 0;
+    color: #003b73;
+    font-size: 24px;
+  }
+
+  .proceso-cierre {
+    margin-top: 28px;
+    padding: 22px;
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .proceso-frase-final {
+    margin-top: 24px;
+    padding: 22px;
+    background: linear-gradient(135deg, #003b73, #005b96);
+    color: white;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 16px rgba(0, 59, 115, 0.25);
+  }
+
+  .proceso-frase-final h3 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+
+  .proceso-frase-final p {
+    margin-bottom: 0;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .proceso-boton-contenedor {
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  .proceso-boton {
+    display: inline-block;
+    padding: 14px 22px;
+    margin: 8px;
+    background-color: #003b73;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 59, 115, 0.25);
+  }
+
+  .proceso-boton:hover {
+    background-color: #005b96;
+  }
+
+  .proceso-boton-secundario {
+    background-color: #007c89;
+  }
+
+  .proceso-boton-secundario:hover {
+    background-color: #0097a7;
+  }
+
+  @media (max-width: 760px) {
+    .proceso-box {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .proceso-header {
+      align-items: flex-start;
+    }
+
+    .proceso-titulo h2 {
+      font-size: 24px;
+    }
+
+    .proceso-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .proceso-fase summary {
+      align-items: flex-start;
+    }
+
+    .proceso-summary-text h3 {
+      font-size: 18px;
+    }
+
+    .proceso-boton {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+</style>
+
+<section class="proceso-box">
+  <div class="proceso-header">
+    <div class="proceso-icono">↻</div>
+    <div class="proceso-titulo">
+      <h2>Proceso de trabajo</h2>
+      <p>Analizar · Diseñar · Programar · Probar · Documentar</p>
+    </div>
+  </div>
+
+  <p class="proceso-texto">
+    En esta WebQuest trabajaréis siguiendo una metodología técnica similar a la que se utiliza
+    en el desarrollo de sistemas programables: analizar, diseñar, programar, probar,
+    documentar y mejorar.
+  </p>
+
+  <p class="proceso-texto">
+    Cada actividad partirá de un ejemplo de Arduino UNO programado en C. Vuestro objetivo no será
+    copiar el código, sino comprender su funcionamiento, identificar los elementos principales del
+    sistema y justificar las decisiones de programación utilizadas.
+  </p>
+
+  <div class="proceso-destacado">
+    <strong>Idea clave:</strong> un buen proyecto técnico no se limita a conseguir que el sistema funcione.
+    También debe poder explicarse, probarse, corregirse y documentarse.
+  </div>
+
+  <div class="proceso-grid">
+    <div class="proceso-card">
+      <h3>¿Cómo se trabajará?</h3>
+      <ul class="proceso-lista">
+        <li>En equipos cooperativos.</li>
+        <li>Con roles asignados.</li>
+        <li>Siguiendo fases de trabajo técnico.</li>
+        <li>Documentando cada actividad.</li>
+        <li>Presentando evidencias de funcionamiento.</li>
+      </ul>
+    </div>
+
+    <div class="proceso-card">
+      <h3>¿Qué se busca?</h3>
+      <ul class="proceso-lista">
+        <li>Comprender la relación entre código y hardware.</li>
+        <li>Interpretar programas en C para ATmega328P.</li>
+        <li>Identificar entradas, salidas y periféricos.</li>
+        <li>Diseñar algoritmos antes de programar.</li>
+        <li>Defender técnicamente el trabajo realizado.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="proceso-bloque-titulo">Fases del proceso</h3>
+
+  <!-- FASE 1 -->
+  <details class="proceso-fase" open>
+    <summary>
+      <span class="proceso-numero">1</span>
+      <span class="proceso-summary-text">
+        <h3>Organización del equipo</h3>
+        <p>Planificar antes de programar</p>
+      </span>
+      <span class="proceso-flecha">+</span>
+    </summary>
+
+    <div class="proceso-contenido">
+      <p class="proceso-texto">
+        Antes de comenzar las actividades técnicas, cada grupo deberá organizarse,
+        repartir responsabilidades y establecer una forma de trabajo común.
+      </p>
+
+      <div class="proceso-destacado">
+        <strong>Idea clave:</strong> un buen equipo técnico no empieza escribiendo código directamente.
+        Primero analiza el reto, distribuye tareas, acuerda cómo documentará el trabajo y decide
+        cómo comprobará que el sistema funciona correctamente.
+      </div>
+
+      <h4 class="proceso-subtitulo">Reparto de roles</h4>
+
+      <div class="proceso-tabla-contenedor">
+        <table class="proceso-tabla">
+          <thead>
+            <tr>
+              <th>Rol</th>
+              <th>Función dentro del equipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="proceso-etiqueta">Coordinador/a</td>
+              <td>Organiza el trabajo del equipo, reparte tareas y controla los tiempos.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Responsable de hardware</td>
+              <td>Identifica componentes, pines, conexiones, montaje y posibles errores eléctricos.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Responsable de programación</td>
+              <td>Analiza el código en C, localiza las partes importantes y propone modificaciones.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Responsable de documentación</td>
+              <td>Recoge capturas, esquemas, explicaciones, evidencias y conclusiones del equipo.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Responsable de pruebas</td>
+              <td>Comprueba el funcionamiento del sistema y anota errores, soluciones y mejoras.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="proceso-subtitulo">Producto de esta fase</h4>
+      <div class="proceso-aviso">
+        Cada equipo deberá tener asignados los roles, haber leído la actividad correspondiente
+        y disponer de un pequeño plan de trabajo que indique quién se encargará del análisis,
+        del código, del montaje, de las pruebas y de la documentación final.
+      </div>
+    </div>
+  </details>
+
+  <!-- FASE 2 -->
+  <details class="proceso-fase">
+    <summary>
+      <span class="proceso-numero">2</span>
+      <span class="proceso-summary-text">
+        <h3>Lectura y comprensión de la actividad</h3>
+        <p>Comprender el reto antes de programar</p>
+      </span>
+      <span class="proceso-flecha">+</span>
+    </summary>
+
+    <div class="proceso-contenido">
+      <p class="proceso-texto">
+        Cada actividad comienza con la lectura del recurso indicado. Antes de escribir código,
+        modificar registros o realizar el montaje, el equipo deberá comprender qué problema resuelve
+        el sistema, qué componentes intervienen y qué comportamiento se espera obtener.
+      </p>
+
+      <h4 class="proceso-subtitulo">Preguntas guía</h4>
+
+      <ol class="proceso-pasos">
+        <li>¿Qué hace el sistema?</li>
+        <li>¿Qué entradas utiliza?</li>
+        <li>¿Qué salidas controla?</li>
+        <li>¿Qué componentes electrónicos intervienen?</li>
+        <li>¿Qué periféricos del ATmega328P se utilizan?</li>
+        <li>¿Qué registros o funciones son importantes?</li>
+        <li>¿Qué debe ocurrir durante la prueba final?</li>
+      </ol>
+
+      <h4 class="proceso-subtitulo">Plantilla de comprensión inicial</h4>
+
+      <div class="proceso-tabla-contenedor">
+        <table class="proceso-tabla">
+          <thead>
+            <tr>
+              <th>Apartado</th>
+              <th>Respuesta del equipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="proceso-etiqueta">Nombre de la actividad</td>
+              <td>Indicar el título de la actividad trabajada.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Objetivo del sistema</td>
+              <td>Explicar brevemente qué debe conseguir el proyecto.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Entradas</td>
+              <td>Indicar sensores, pulsadores, potenciómetros, comunicación serie u otros elementos de entrada.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Salidas</td>
+              <td>Indicar LEDs, zumbadores, motores, servomotores, pantalla LCD u otros actuadores.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Periféricos utilizados</td>
+              <td>Identificar ADC, TIMER, PWM, USART, INT0 u otros recursos del microcontrolador.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Funcionamiento esperado</td>
+              <td>Describir qué debería ocurrir cuando el sistema funcione correctamente.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="proceso-aviso">
+        Al finalizar esta fase, cada equipo deberá entregar una breve ficha de comprensión inicial.
+      </div>
+    </div>
+  </details>
+
+  <!-- FASE 3 -->
+  <details class="proceso-fase">
+    <summary>
+      <span class="proceso-numero">3</span>
+      <span class="proceso-summary-text">
+        <h3>Análisis técnico</h3>
+        <p>Relacionar hardware, pines, periféricos y código</p>
+      </span>
+      <span class="proceso-flecha">+</span>
+    </summary>
+
+    <div class="proceso-contenido">
+      <p class="proceso-texto">
+        Una vez comprendida la actividad, el equipo deberá realizar un análisis técnico
+        del sistema. Esta fase sirve para conectar el montaje físico con el programa en C.
+      </p>
+
+      <div class="proceso-grid">
+        <div class="proceso-card">
+          <h3>¿Qué se analiza?</h3>
+          <ul class="proceso-lista">
+            <li>Componentes electrónicos utilizados.</li>
+            <li>Entradas y salidas del sistema.</li>
+            <li>Pines de Arduino UNO empleados.</li>
+            <li>Correspondencia con puertos del ATmega328P.</li>
+            <li>Periféricos utilizados.</li>
+            <li>Registros, variables y funciones importantes.</li>
+          </ul>
+        </div>
+
+        <div class="proceso-card">
+          <h3>¿Para qué sirve?</h3>
+          <ul class="proceso-lista">
+            <li>Comprender la relación entre hardware y software.</li>
+            <li>Evitar conexiones incorrectas.</li>
+            <li>Justificar la configuración de puertos y periféricos.</li>
+            <li>Detectar posibles errores antes de probar el sistema.</li>
+            <li>Preparar una documentación técnica clara.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4 class="proceso-subtitulo">Plantilla de análisis técnico</h4>
+
+      <div class="proceso-tabla-contenedor">
+        <table class="proceso-tabla">
+          <thead>
+            <tr>
+              <th>Apartado</th>
+              <th>Respuesta del equipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="proceso-etiqueta">Nombre de la actividad</td>
+              <td>Indicar el título de la actividad trabajada.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Objetivo técnico</td>
+              <td>Explicar qué debe conseguir el sistema desde el punto de vista técnico.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Componentes utilizados</td>
+              <td>Enumerar sensores, actuadores, resistencias, pantalla LCD, motor, servo, zumbador u otros elementos.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Entradas</td>
+              <td>Indicar qué señales recibe el sistema.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Salidas</td>
+              <td>Indicar qué elementos controla el sistema.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Pines de Arduino UNO</td>
+              <td>Anotar los pines físicos utilizados: D2, D9, A0, A1, etc.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Puertos del ATmega328P</td>
+              <td>Relacionar los pines de Arduino con PB, PC o PD.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Periféricos utilizados</td>
+              <td>Identificar ADC, TIMER0, TIMER1, PWM, USART, INT0 u otros recursos internos.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Registros importantes</td>
+              <td>Indicar registros como DDRx, PORTx, PINx, ADMUX, ADCSRA, TCCR1A, OCR1A, UDR0, etc.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Funcionamiento esperado</td>
+              <td>Describir qué debe ocurrir cuando el sistema funciona correctamente.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="proceso-subtitulo">Relación hardware-programa</h4>
+
+      <div class="proceso-tabla-contenedor">
+        <table class="proceso-tabla">
+          <thead>
+            <tr>
+              <th>Elemento físico</th>
+              <th>Pin Arduino</th>
+              <th>Puerto ATmega328P</th>
+              <th>Función en el programa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LED</td>
+              <td>D13</td>
+              <td>PB5</td>
+              <td>Salida digital controlada desde el código.</td>
+            </tr>
+            <tr>
+              <td>Pulsador</td>
+              <td>D2</td>
+              <td>PD2 / INT0</td>
+              <td>Entrada digital que puede activar una interrupción externa.</td>
+            </tr>
+            <tr>
+              <td>Potenciómetro</td>
+              <td>A0</td>
+              <td>PC0 / ADC0</td>
+              <td>Entrada analógica leída mediante el ADC.</td>
+            </tr>
+            <tr>
+              <td>Servomotor</td>
+              <td>D9</td>
+              <td>PB1 / OC1A</td>
+              <td>Salida PWM generada mediante TIMER1.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="proceso-checklist">
+        <li>Las entradas y salidas están correctamente identificadas.</li>
+        <li>Los pines de Arduino se han relacionado con los puertos del ATmega328P.</li>
+        <li>Se han localizado los periféricos necesarios para la actividad.</li>
+        <li>El equipo puede explicar qué debe ocurrir durante la prueba final.</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- FASE 4 -->
+  <details class="proceso-fase">
+    <summary>
+      <span class="proceso-numero">4</span>
+      <span class="proceso-summary-text">
+        <h3>Diseño del algoritmo</h3>
+        <p>Organizar la lógica antes de escribir el código</p>
+      </span>
+      <span class="proceso-flecha">+</span>
+    </summary>
+
+    <div class="proceso-contenido">
+      <p class="proceso-texto">
+        Antes de programar en C, cada equipo deberá representar la lógica de funcionamiento
+        del sistema mediante pseudocódigo, diagrama de flujo o esquema de bloques.
+      </p>
+
+      <ol class="proceso-pasos">
+        <li>Identificar el objetivo del sistema.</li>
+        <li>Definir entradas y salidas.</li>
+        <li>Establecer el estado inicial.</li>
+        <li>Describir cálculos, comparaciones o conversiones.</li>
+        <li>Incluir decisiones y condiciones.</li>
+        <li>Incluir temporizadores, interrupciones, ADC, PWM o USART si procede.</li>
+        <li>Definir qué debe observarse durante la prueba final.</li>
+      </ol>
+
+      <h4 class="proceso-subtitulo">Plantilla para diseñar el algoritmo</h4>
+
+      <div class="proceso-tabla-contenedor">
+        <table class="proceso-tabla">
+          <thead>
+            <tr>
+              <th>Apartado</th>
+              <th>Descripción del equipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="proceso-etiqueta">Objetivo del algoritmo</td>
+              <td>Explicar qué debe resolver el programa.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Estado inicial</td>
+              <td>Indicar cómo comienza el sistema.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Entradas</td>
+              <td>Indicar qué datos debe leer el sistema.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Procesamiento</td>
+              <td>Describir cálculos, comparaciones, escalados o conversiones.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Salidas</td>
+              <td>Indicar qué elementos se activan o modifican.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Interrupciones</td>
+              <td>Explicar si se utiliza INT0, ADC_vect, TIMER o USART.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Resultado esperado</td>
+              <td>Explicar qué debe observarse en la prueba final.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="proceso-subtitulo">Ejemplo de pseudocódigo general</h4>
+
+      <pre class="proceso-codigo">INICIO
+
+Configurar entradas y salidas
+Configurar periféricos necesarios
+Inicializar variables
+
+MIENTRAS el sistema esté funcionando
+
+    Leer entrada o esperar evento
+
+    SI se detecta una condición:
+        Procesar información
+        Actualizar salida
+        Guardar nuevo estado
+
+    SI se utiliza temporizador:
+        Comprobar intervalo de tiempo
+        Ejecutar acción correspondiente
+
+    SI se utiliza comunicación:
+        Recibir o enviar dato
+        Actualizar buffer o variable
+
+FIN MIENTRAS</pre>
+
+      <div class="proceso-aviso">
+        El algoritmo deberá servir como puente entre el análisis técnico y el código en C.
+      </div>
+    </div>
+  </details>
+
+  <!-- FASE 5 -->
+  <details class="proceso-fase">
+    <summary>
+      <span class="proceso-numero">5</span>
+      <span class="proceso-summary-text">
+        <h3>Programación en C</h3>
+        <p>Convertir el algoritmo en un programa estructurado</p>
+      </span>
+      <span class="proceso-flecha">+</span>
+    </summary>
+
+    <div class="proceso-contenido">
+      <p class="proceso-texto">
+        En esta fase, cada equipo transformará el algoritmo en un programa escrito en C
+        para Arduino UNO. El código deberá estar organizado, comentado y relacionado con
+        el hardware.
+      </p>
+
+      <div class="proceso-grid">
+        <div class="proceso-card">
+          <h3>Elementos que se deben localizar</h3>
+          <ul class="proceso-lista">
+            <li>Librerías incluidas.</li>
+            <li>Constantes y definiciones.</li>
+            <li>Variables globales.</li>
+            <li>Función principal.</li>
+            <li>Funciones auxiliares.</li>
+            <li>Rutinas de interrupción.</li>
+            <li>Registros del ATmega328P.</li>
+          </ul>
+        </div>
+
+        <div class="proceso-card">
+          <h3>Buenas prácticas</h3>
+          <ul class="proceso-lista">
+            <li>Usar nombres claros.</li>
+            <li>Separar inicialización y lógica principal.</li>
+            <li>Comentar los bloques importantes.</li>
+            <li>Justificar registros y periféricos.</li>
+            <li>Evitar copiar código sin entenderlo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4 class="proceso-subtitulo">Estructura recomendada del código</h4>
+
+      <pre class="proceso-codigo">#define F_CPU 16000000UL
+
+#include &lt;avr/io.h&gt;
+#include &lt;avr/interrupt.h&gt;
+#include &lt;util/delay.h&gt;
+
+/* Definición de constantes */
+#define LED_PIN PB5
+
+/* Variables globales */
+volatile unsigned char estado = 0;
+
+/* Prototipos de funciones */
+void Puertos_Init(void);
+void Perifericos_Init(void);
+
+int main(void)
+{
+    Puertos_Init();
+    Perifericos_Init();
+
+    sei();
+
+    while (1)
+    {
+        /*
+         * Lógica principal del programa.
+         */
+    }
+
+    return 0;
+}
+
+void Puertos_Init(void)
+{
+    DDRB |= (1 &lt;&lt; LED_PIN);
+}
+
+void Perifericos_Init(void)
+{
+    /*
+     * Configuración de ADC, TIMER, PWM, USART,
+     * interrupciones externas u otros periféricos.
+     */
+}
+
+ISR(TIMER1_COMPA_vect)
+{
+    /*
+     * Código que se ejecuta cuando ocurre
+     * el evento asociado a la interrupción.
+     */
+}</pre>
+
+      <h4 class="proceso-subtitulo">Relación entre algoritmo y código</h4>
+
+      <div class="proceso-tabla-contenedor">
+        <table class="proceso-tabla">
+          <thead>
+            <tr>
+              <th>Elemento del algoritmo</th>
+              <th>Traducción al programa en C</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="proceso-etiqueta">Configurar entradas y salidas</td>
+              <td>Uso de DDRB, DDRC, DDRD, PORTB, PORTC o PORTD.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Leer una entrada digital</td>
+              <td>Consulta de PINx o uso de una interrupción externa como INT0.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Leer una entrada analógica</td>
+              <td>Configuración del ADC y lectura de ADCH, ADCL o del resultado completo.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Controlar una salida</td>
+              <td>Modificación de PORTx o actualización de señales PWM.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Generar una temporización</td>
+              <td>Configuración de TIMER0, TIMER1 u OCR1A/OCR1B.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Enviar o recibir datos</td>
+              <td>Configuración de USART y uso de UDR0, UCSR0A, UCSR0B o UBRR0.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="proceso-aviso">
+        Los comentarios deben explicar la intención del código, no solo repetir lo que hace cada línea.
+      </div>
+    </div>
+  </details>
+
+  <!-- FASE 6 -->
+  <details class="proceso-fase">
+    <summary>
+      <span class="proceso-numero">6</span>
+      <span class="proceso-summary-text">
+        <h3>Prueba y depuración</h3>
+        <p>Comprobar, detectar errores y mejorar la solución</p>
+      </span>
+      <span class="proceso-flecha">+</span>
+    </summary>
+
+    <div class="proceso-contenido">
+      <p class="proceso-texto">
+        Una vez programada la actividad, cada equipo deberá comprobar si el sistema funciona correctamente.
+        Se verificará la compilación, la carga del código, el montaje, las entradas, las salidas y el comportamiento general.
+      </p>
+
+      <ol class="proceso-pasos">
+        <li>Compilar el programa y revisar errores.</li>
+        <li>Verificar componentes, pines, alimentación y polaridades.</li>
+        <li>Cargar el código en Arduino UNO.</li>
+        <li>Probar entradas: pulsadores, sensores, ADC o USART.</li>
+        <li>Probar salidas: LEDs, buzzer, motor, servo, LCD, PWM o terminal serie.</li>
+        <li>Comparar el resultado con el algoritmo diseñado.</li>
+        <li>Localizar errores y aplicar correcciones.</li>
+        <li>Registrar evidencias de funcionamiento.</li>
+        <li>Proponer mejoras o ampliaciones.</li>
+      </ol>
+
+      <h4 class="proceso-subtitulo">Plan de prueba</h4>
+
+      <div class="proceso-tabla-contenedor">
+        <table class="proceso-tabla">
+          <thead>
+            <tr>
+              <th>Aspecto</th>
+              <th>Resultado esperado</th>
+              <th>Evidencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="proceso-etiqueta">Compilación</td>
+              <td>El programa compila sin errores.</td>
+              <td>Captura del entorno o mensaje de compilación correcta.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Carga en Arduino UNO</td>
+              <td>El archivo se transfiere correctamente.</td>
+              <td>Captura del proceso o explicación del resultado.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Montaje físico</td>
+              <td>Los componentes coinciden con el esquema.</td>
+              <td>Fotografía del montaje o esquema revisado.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Entradas</td>
+              <td>El sistema detecta sensores, pulsadores o datos recibidos.</td>
+              <td>Descripción de la prueba realizada.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Salidas</td>
+              <td>Los actuadores o salidas responden como se esperaba.</td>
+              <td>Foto, vídeo, captura del terminal o explicación técnica.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="proceso-subtitulo">Registro de errores y soluciones</h4>
+
+      <div class="proceso-tabla-contenedor">
+        <table class="proceso-tabla">
+          <thead>
+            <tr>
+              <th>Error detectado</th>
+              <th>Posible causa</th>
+              <th>Solución aplicada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>El programa no compila.</td>
+              <td>Error de sintaxis, librería ausente o variable incorrecta.</td>
+              <td>Revisar el mensaje del compilador y corregir la línea indicada.</td>
+            </tr>
+            <tr>
+              <td>La salida no responde.</td>
+              <td>Pin mal configurado, conexión incorrecta o registro no inicializado.</td>
+              <td>Revisar DDRx, PORTx, esquema y correspondencia con Arduino UNO.</td>
+            </tr>
+            <tr>
+              <td>La lectura del sensor es incorrecta.</td>
+              <td>Error de conexión, configuración del ADC o fórmula de escalado.</td>
+              <td>Comprobar canal ADC, referencia de tensión, registros y fórmula.</td>
+            </tr>
+            <tr>
+              <td>La interrupción no se ejecuta.</td>
+              <td>Interrupciones globales deshabilitadas o registro mal configurado.</td>
+              <td>Revisar configuración del periférico y uso de sei().</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="proceso-aviso">
+        Los errores también forman parte del aprendizaje. En la memoria técnica deben explicarse:
+        qué fallaba, por qué ocurría y cómo se solucionó.
+      </div>
+    </div>
+  </details>
+
+  <!-- FASE 7 -->
+  <details class="proceso-fase">
+    <summary>
+      <span class="proceso-numero">7</span>
+      <span class="proceso-summary-text">
+        <h3>Documentación de la actividad</h3>
+        <p>Explicar el trabajo técnico realizado</p>
+      </span>
+      <span class="proceso-flecha">+</span>
+    </summary>
+
+    <div class="proceso-contenido">
+      <p class="proceso-texto">
+        Al finalizar cada actividad, el equipo deberá documentar el proceso seguido.
+        La documentación técnica permitirá demostrar que el sistema no solo funciona,
+        sino que se comprende cómo funciona.
+      </p>
+
+      <h4 class="proceso-subtitulo">Ficha técnica de cada actividad</h4>
+
+      <pre class="proceso-codigo">Nombre de la actividad:
+
+Objetivo:
+
+Componentes utilizados:
+
+Entradas del sistema:
+
+Salidas del sistema:
+
+Pines de Arduino UNO utilizados:
+
+Puertos del ATmega328P:
+
+Periféricos empleados:
+
+Resumen del funcionamiento:
+
+Algoritmo o pseudocódigo:
+
+Fragmento de código más importante:
+
+Explicación del código:
+
+Prueba realizada:
+
+Evidencias aportadas:
+
+Errores encontrados:
+
+Soluciones aplicadas:
+
+Mejoras posibles:
+
+Conclusión final:</pre>
+
+      <h4 class="proceso-subtitulo">Evidencias recomendadas</h4>
+
+      <div class="proceso-tabla-contenedor">
+        <table class="proceso-tabla">
+          <thead>
+            <tr>
+              <th>Evidencia</th>
+              <th>Utilidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="proceso-etiqueta">Captura del entorno de programación</td>
+              <td>Demuestra creación del proyecto, compilación o carga del programa.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Fotografía del montaje</td>
+              <td>Muestra la conexión de los componentes y la organización del circuito.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Vídeo breve</td>
+              <td>Permite comprobar movimiento, sonido, secuencias de LEDs o interacción.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Captura del terminal serie</td>
+              <td>Útil para actividades con USART, envío o recepción de datos.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Tabla de resultados</td>
+              <td>Sirve para registrar valores de ADC, tensiones, frecuencias, posiciones o tiempos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ul class="proceso-checklist">
+        <li>La actividad tiene título y objetivo definidos.</li>
+        <li>Los componentes utilizados aparecen identificados.</li>
+        <li>Se han indicado entradas, salidas, pines y puertos.</li>
+        <li>Se ha explicado el algoritmo.</li>
+        <li>El código está comentado y organizado.</li>
+        <li>Hay evidencias de prueba del funcionamiento.</li>
+        <li>Se han documentado errores y soluciones.</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- FASE 8 -->
+  <details class="proceso-fase">
+    <summary>
+      <span class="proceso-numero">8</span>
+      <span class="proceso-summary-text">
+        <h3>Puesta en común</h3>
+        <p>Compartir resultados, dificultades y aprendizajes</p>
+      </span>
+      <span class="proceso-flecha">+</span>
+    </summary>
+
+    <div class="proceso-contenido">
+      <p class="proceso-texto">
+        Al finalizar una o varias actividades, cada equipo realizará una breve puesta en común.
+        Se compartirán los resultados obtenidos, las decisiones técnicas tomadas, los errores encontrados
+        y las mejoras que podrían aplicarse al sistema.
+      </p>
+
+      <h4 class="proceso-subtitulo">Guion de presentación del equipo</h4>
+
+      <div class="proceso-tabla-contenedor">
+        <table class="proceso-tabla">
+          <thead>
+            <tr>
+              <th>Parte de la exposición</th>
+              <th>Contenido recomendado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="proceso-etiqueta">Actividad realizada</td>
+              <td>Nombre de la actividad y breve descripción del reto técnico.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Objetivo del sistema</td>
+              <td>Qué debe hacer el proyecto y qué comportamiento se esperaba obtener.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Hardware utilizado</td>
+              <td>Componentes, entradas, salidas, pines de Arduino UNO y conexiones principales.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Periféricos empleados</td>
+              <td>ADC, TIMER, PWM, USART, INT0, LCD u otros recursos utilizados.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Algoritmo</td>
+              <td>Explicación sencilla de la lógica de funcionamiento.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Código principal</td>
+              <td>Fragmento o bloque más importante del programa.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Prueba realizada</td>
+              <td>Evidencia de funcionamiento: foto, vídeo, captura, tabla o terminal serie.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Errores y soluciones</td>
+              <td>Problemas encontrados y cómo se corrigieron.</td>
+            </tr>
+            <tr>
+              <td class="proceso-etiqueta">Conclusión</td>
+              <td>Qué ha aprendido el equipo y qué mejora podría aplicar.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="proceso-subtitulo">Preguntas para el debate</h4>
+
+      <ol class="proceso-pasos">
+        <li>¿Qué parte de la actividad ha sido más sencilla?</li>
+        <li>¿Qué parte ha resultado más difícil?</li>
+        <li>¿Qué periférico del ATmega328P ha sido más importante?</li>
+        <li>¿Qué relación hay entre el código y el montaje físico?</li>
+        <li>¿Qué error os ha ayudado más a aprender?</li>
+        <li>¿Qué cambiaríais para mejorar el programa?</li>
+        <li>¿Cómo podría aplicarse este sistema a un contexto industrial o real?</li>
+      </ol>
+
+      <div class="proceso-aviso">
+        La puesta en común no es una lectura de la memoria técnica. Debe ser una explicación breve,
+        comprensible y apoyada en evidencias.
+      </div>
+    </div>
+  </details>
+
+  <!-- PRODUCTO FINAL -->
+  <section class="proceso-producto">
+    <h3>Producto final del proceso</h3>
+
+    <p class="proceso-texto">
+      Al finalizar la WebQuest, cada equipo deberá entregar un producto final que demuestre
+      el trabajo realizado durante las actividades. Este producto no consistirá únicamente en
+      presentar código, sino en explicar de forma técnica cómo se ha analizado, programado,
+      probado y documentado cada sistema.
+    </p>
+
+    <div class="proceso-grid">
+      <div class="proceso-card">
+        <h3>Producto principal</h3>
+        <ul class="proceso-lista">
+          <li>Memoria técnica final del equipo.</li>
+          <li>Código en C comentado y organizado.</li>
+          <li>Algoritmos o pseudocódigo.</li>
+          <li>Análisis de entradas, salidas, pines y periféricos.</li>
+          <li>Evidencias de prueba y depuración.</li>
+          <li>Conclusión final del aprendizaje.</li>
+        </ul>
+      </div>
+
+      <div class="proceso-card">
+        <h3>Presentación final</h3>
+        <ul class="proceso-lista">
+          <li>Breve exposición oral del trabajo realizado.</li>
+          <li>Explicación de una actividad seleccionada.</li>
+          <li>Demostración o evidencia de funcionamiento.</li>
+          <li>Justificación de las decisiones técnicas.</li>
+          <li>Errores encontrados y soluciones aplicadas.</li>
+          <li>Propuestas de mejora o ampliación.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4 class="proceso-subtitulo">Estructura de la memoria técnica final</h4>
+
+    <ol class="proceso-pasos">
+      <li>Portada: título de la WebQuest, integrantes del equipo, módulo, curso y fecha.</li>
+      <li>Índice: organización de los apartados principales.</li>
+      <li>Introducción: objetivo general de la WebQuest.</li>
+      <li>Actividades realizadas: selección de actividades trabajadas.</li>
+      <li>Análisis técnico: componentes, entradas, salidas, pines, puertos y periféricos.</li>
+      <li>Diseño del algoritmo: pseudocódigo, diagrama de flujo o esquema.</li>
+      <li>Código en C: programa comentado y explicación de partes principales.</li>
+      <li>Pruebas y depuración: evidencias, errores y soluciones.</li>
+      <li>Conclusión: valoración del aprendizaje, dificultades y mejoras.</li>
+      <li>Recursos consultados: enlaces, documentación y fuentes utilizadas.</li>
+    </ol>
+
+    <div class="proceso-aviso">
+      No es obligatorio que todos los equipos realicen todas las actividades. El profesorado seleccionará
+      las más adecuadas según el tiempo disponible, el nivel del grupo y los recursos del aula.
+      Lo fundamental es seguir el proceso completo: analizar, diseñar, programar, probar, documentar y presentar.
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="proceso-cierre">
+    <strong>Cierre del proceso:</strong>
+    recordad que el objetivo de esta WebQuest no es avanzar deprisa, sino comprender cada paso.
+    Cada actividad debe ayudaros a relacionar el código en C, el microcontrolador ATmega328P
+    y el funcionamiento real del hardware.
+  </section>
+
+  <div class="proceso-frase-final">
+    <h3>Comprender, programar, comprobar y explicar</h3>
+    <p>
+      Un buen equipo técnico no solo consigue que el sistema funcione:
+      también sabe explicar por qué funciona, cómo se ha programado,
+      qué errores han aparecido y cómo podrían mejorarse las soluciones desarrolladas.
+    </p>
+  </div>
+
+  <div class="proceso-boton-contenedor">
+    <a class="proceso-boton" href="https://sites.google.com/view/delsketchalc/actividades" target="_blank" rel="noopener">
+      Ver actividades
+    </a>
+
+    <a class="proceso-boton proceso-boton-secundario" href="https://sites.google.com/view/delsketchalc/laboratorios" target="_blank" rel="noopener">
+      Ir a laboratorios
+    </a>
+
+    <a class="proceso-boton proceso-boton-secundario" href="https://sites.google.com/view/delsketchalc/recursos" target="_blank" rel="noopener">
+      Consultar recursos
+    </a>
+
+    <a class="proceso-boton proceso-boton-secundario" href="https://sites.google.com/view/delsketchalc/evaluaci%C3%B3n" target="_blank" rel="noopener">
+      Ver evaluación
+    </a>
+  </div>
+</section>
