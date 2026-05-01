@@ -1,0 +1,705 @@
+<style>
+  .laboratorios-box {
+    font-family: Arial, sans-serif;
+    width: 85%;
+    max-width: 893px;
+    margin: 24px auto;
+    padding: 26px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffffff, #f4fbff);
+    border: 1px solid #d6eaf5;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    color: #1f2d3d;
+  }
+
+  .laboratorios-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .laboratorios-icono {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .laboratorios-titulo h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #003b73;
+  }
+
+  .laboratorios-titulo p {
+    margin: 4px 0 0;
+    color: #007c89;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .laboratorios-texto {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 18px 0;
+  }
+
+  .laboratorios-destacado {
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin: 24px 0;
+    font-size: 16.5px;
+    line-height: 1.6;
+  }
+
+  .laboratorios-destacado strong {
+    color: #003b73;
+  }
+
+  .laboratorios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .laboratorios-card {
+    background: white;
+    border: 1px solid #dbeaf2;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  .laboratorios-card h3 {
+    margin-top: 0;
+    color: #005b96;
+    font-size: 19px;
+  }
+
+  .laboratorios-lista {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+    font-size: 15.5px;
+  }
+
+  .laboratorios-bloque-titulo {
+    color: #003b73;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    font-size: 23px;
+  }
+
+  .laboratorios-pasos {
+    counter-reset: pasos;
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 24px;
+  }
+
+  .laboratorios-pasos li {
+    counter-increment: pasos;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 15px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border-left: 5px solid #0097a7;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
+  .laboratorios-pasos li::before {
+    content: counter(pasos);
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .laboratorios-tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 14px;
+    margin-bottom: 24px;
+  }
+
+  .laboratorios-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    font-size: 15.5px;
+    background-color: white;
+  }
+
+  .laboratorios-tabla thead {
+    background-color: #003b73;
+    color: white;
+  }
+
+  .laboratorios-tabla th,
+  .laboratorios-tabla td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5eef4;
+    vertical-align: top;
+  }
+
+  .laboratorios-tabla tbody tr:nth-child(even) {
+    background-color: #f6fbfe;
+  }
+
+  .laboratorios-tabla tbody tr:hover {
+    background-color: #eaf6fb;
+  }
+
+  .laboratorios-etiqueta {
+    font-weight: bold;
+    color: #005b96;
+  }
+
+  .laboratorios-plantilla {
+    background-color: #1f2d3d;
+    color: #f4f8fb;
+    padding: 18px;
+    border-radius: 14px;
+    overflow-x: auto;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 14px 0 24px;
+    white-space: pre-wrap;
+  }
+
+  .laboratorios-aviso {
+    margin: 18px 0 24px;
+    padding: 16px 18px;
+    background-color: #fff8e1;
+    border-left: 6px solid #ff9800;
+    border-radius: 12px;
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+
+  .laboratorios-reto {
+    margin-top: 24px;
+    padding: 22px;
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    border-radius: 12px;
+  }
+
+  .laboratorios-reto h3 {
+    margin-top: 0;
+    color: #003b73;
+    font-size: 22px;
+  }
+
+  .laboratorios-reto p {
+    line-height: 1.6;
+  }
+
+  .laboratorios-cierre {
+    margin-top: 28px;
+    padding: 22px;
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .laboratorios-frase-final {
+    margin-top: 24px;
+    padding: 22px;
+    background: linear-gradient(135deg, #003b73, #005b96);
+    color: white;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 16px rgba(0, 59, 115, 0.25);
+  }
+
+  .laboratorios-frase-final h3 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+
+  .laboratorios-frase-final p {
+    margin-bottom: 0;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .laboratorios-boton-contenedor {
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  .laboratorios-boton {
+    display: inline-block;
+    padding: 14px 22px;
+    margin: 8px;
+    background-color: #003b73;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 59, 115, 0.25);
+  }
+
+  .laboratorios-boton:hover {
+    background-color: #005b96;
+  }
+
+  .laboratorios-boton-secundario {
+    background-color: #007c89;
+  }
+
+  .laboratorios-boton-secundario:hover {
+    background-color: #0097a7;
+  }
+
+  @media (max-width: 760px) {
+    .laboratorios-box {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .laboratorios-header {
+      align-items: flex-start;
+    }
+
+    .laboratorios-titulo h2 {
+      font-size: 24px;
+    }
+
+    .laboratorios-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .laboratorios-boton {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+</style>
+
+<section class="laboratorios-box">
+  <div class="laboratorios-header">
+    <div class="laboratorios-icono">⚙</div>
+    <div class="laboratorios-titulo">
+      <h2>Laboratorios prácticos</h2>
+      <p>Del análisis del código a la prueba real del sistema</p>
+    </div>
+  </div>
+
+  <p class="laboratorios-texto">
+    En esta sección se recogen los laboratorios prácticos de la WebQuest
+    <strong>“Del Sketch al C”</strong>. Cada laboratorio parte de un ejemplo de Arduino UNO
+    programado en C y tiene como finalidad aplicar el proceso técnico completo:
+    analizar, diseñar, programar, probar, depurar y documentar.
+  </p>
+
+  <div class="laboratorios-destacado">
+    <strong>Idea clave:</strong> el objetivo no es realizar los montajes de forma mecánica,
+    sino comprender qué hace cada sistema, qué periféricos del ATmega328P intervienen
+    y cómo el código en C controla o interpreta el hardware.
+  </div>
+
+  <div class="laboratorios-grid">
+    <div class="laboratorios-card">
+      <h3>¿Qué se trabaja en los laboratorios?</h3>
+      <ul class="laboratorios-lista">
+        <li>Montaje y análisis de circuitos con Arduino UNO.</li>
+        <li>Programación en C aplicada al ATmega328P.</li>
+        <li>Entradas digitales y analógicas.</li>
+        <li>Salidas digitales, PWM, LCD y comunicación serie.</li>
+        <li>Temporizadores, interrupciones y registros.</li>
+        <li>Prueba, depuración y documentación técnica.</li>
+      </ul>
+    </div>
+
+    <div class="laboratorios-card">
+      <h3>¿Qué debe entregar cada equipo?</h3>
+      <ul class="laboratorios-lista">
+        <li>Ficha técnica del laboratorio realizado.</li>
+        <li>Algoritmo o pseudocódigo.</li>
+        <li>Código en C comentado.</li>
+        <li>Evidencias de funcionamiento.</li>
+        <li>Registro de errores y soluciones.</li>
+        <li>Conclusión técnica de la práctica.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="laboratorios-bloque-titulo">Normas de trabajo en el laboratorio</h3>
+
+  <ol class="laboratorios-pasos">
+    <li>No conectar ni alimentar el circuito sin revisar previamente el montaje.</li>
+    <li>Comprobar la polaridad de LEDs, condensadores, diodos y fuentes de alimentación.</li>
+    <li>Verificar que los pines utilizados en el código coinciden con los pines del montaje.</li>
+    <li>No conectar motores u otras cargas de potencia directamente a un pin del microcontrolador.</li>
+    <li>Documentar los errores encontrados durante las pruebas.</li>
+    <li>Guardar capturas, fotografías o vídeos como evidencia del funcionamiento.</li>
+    <li>Mantener el código ordenado, comentado y relacionado con el algoritmo diseñado.</li>
+  </ol>
+
+  <h3 class="laboratorios-bloque-titulo">Itinerario de laboratorios</h3>
+
+  <div class="laboratorios-tabla-contenedor">
+    <table class="laboratorios-tabla">
+      <thead>
+        <tr>
+          <th>Bloque</th>
+          <th>Laboratorios</th>
+          <th>Conceptos principales</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="laboratorios-etiqueta">Bloque 0: Preparación</td>
+          <td>Lab 0</td>
+          <td>Configuración del entorno de trabajo.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Bloque 1: Salidas digitales e interrupciones</td>
+          <td>Labs 1-2</td>
+          <td>Puertos, LEDs, TIMER1, INT0 y antirrebote.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Bloque 2: Entradas analógicas y PWM</td>
+          <td>Labs 3-7</td>
+          <td>ADC, PWM, sensores, servomotor, buzzer y LED RGB.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Bloque 3: Visualización en LCD</td>
+          <td>Labs 8-9</td>
+          <td>Pantalla LCD, visualización de datos y conversión ASCII.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Bloque 4: Control de potencia y temporización</td>
+          <td>Labs 10-11</td>
+          <td>MOSFET, motor CC, zumbador, temporizadores y reinicio.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Bloque 5: Comunicación serie</td>
+          <td>Labs 12-15</td>
+          <td>USART, buffers, envío y recepción de datos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="laboratorios-bloque-titulo">Tabla general de laboratorios</h3>
+
+  <div class="laboratorios-tabla-contenedor">
+    <table class="laboratorios-tabla">
+      <thead>
+        <tr>
+          <th>Laboratorio</th>
+          <th>Actividad asociada</th>
+          <th>Proyecto</th>
+          <th>Conceptos trabajados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 0</td>
+          <td>Actividad 1</td>
+          <td>Configuración del entorno</td>
+          <td>Arduino IDE, Atmel Studio y carga de programas.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 1</td>
+          <td>Actividad 2</td>
+          <td>Blink</td>
+          <td>Salida digital, TIMER1 e interrupciones.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 2</td>
+          <td>Actividad 7</td>
+          <td>Spaceship Interface</td>
+          <td>Pulsador, INT0, antirrebote y secuencia de LEDs.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 3</td>
+          <td>Actividad 6</td>
+          <td>Love-O-Meter</td>
+          <td>TMP36, ADC, LEDs y estructuras condicionales.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 4</td>
+          <td>Actividad 3</td>
+          <td>Light Theremin</td>
+          <td>Fotoresistencia, ADC, PWM y buzzer.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 5</td>
+          <td>Actividad 4</td>
+          <td>Mood Cue</td>
+          <td>Potenciómetro, ADC, servomotor y TIMER1/PWM.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 6</td>
+          <td>Actividad 5</td>
+          <td>Color Mixing Lamp</td>
+          <td>Tres LDR, LED RGB, ADC y PWM.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 7</td>
+          <td>Actividad 12</td>
+          <td>Keyboard Instrument</td>
+          <td>Pulsadores, escalera de resistencias, ADC y tonos.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 8</td>
+          <td>Actividad 8</td>
+          <td>Crystal Ball</td>
+          <td>LCD, pulsador, INT0 y respuestas aleatorias.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 9</td>
+          <td>Actividad 9</td>
+          <td>Crystal Ball II</td>
+          <td>LCD, potenciómetro, ADC y conversión ASCII.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 10</td>
+          <td>Actividad 10</td>
+          <td>Motorized Pinwheel</td>
+          <td>Motor CC, MOSFET, diodo e INT0.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 11</td>
+          <td>Actividad 11</td>
+          <td>Digital Hourglass</td>
+          <td>TIMER1, LEDs, zumbador, PWM y reinicio.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 12</td>
+          <td>Actividad 16</td>
+          <td>Serial Communication I</td>
+          <td>ADC, TIMER1, USART y envío de 1 byte.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 13</td>
+          <td>Actividad 15</td>
+          <td>Serial Communication II</td>
+          <td>ADC de 10 bits, ADCL/ADCH y buffer.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 14</td>
+          <td>Actividad 14</td>
+          <td>Serial Communication III</td>
+          <td>Envío de cadenas, buffer, UDR0 y UDRE.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Lab 15</td>
+          <td>Actividad 13</td>
+          <td>Serial Communication IV</td>
+          <td>Recepción serie, ASCII, servo y PWM.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="laboratorios-aviso">
+    <strong>Importante:</strong> no será obligatorio realizar todos los laboratorios.
+    El profesorado seleccionará los más adecuados según el tiempo disponible, el nivel
+    del grupo y los recursos del aula.
+  </div>
+
+  <h3 class="laboratorios-bloque-titulo">Selección mínima recomendada</h3>
+
+  <div class="laboratorios-tabla-contenedor">
+    <table class="laboratorios-tabla">
+      <thead>
+        <tr>
+          <th>Tipo de laboratorio</th>
+          <th>Objetivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="laboratorios-etiqueta">Un laboratorio de salidas digitales o interrupciones</td>
+          <td>Comprender el control de LEDs, eventos y temporización.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Un laboratorio con entrada analógica ADC</td>
+          <td>Leer sensores o potenciómetros y transformar la medida.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Un laboratorio con PWM o temporizadores</td>
+          <td>Controlar intensidad, sonido, posición o tiempo.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Un laboratorio con LCD o comunicación serie</td>
+          <td>Mostrar o transmitir información procesada por el microcontrolador.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Un reto final de integración</td>
+          <td>Modificar, ampliar o mejorar una de las prácticas realizadas.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="laboratorios-bloque-titulo">Ficha común de laboratorio</h3>
+
+  <pre class="laboratorios-plantilla">Nombre del laboratorio:
+
+Actividad asociada:
+
+Objetivo técnico:
+
+Componentes utilizados:
+
+Entradas del sistema:
+
+Salidas del sistema:
+
+Pines de Arduino UNO:
+
+Puertos del ATmega328P:
+
+Periféricos utilizados:
+
+Registros o funciones importantes:
+
+Algoritmo o pseudocódigo:
+
+Código en C comentado:
+
+Prueba realizada:
+
+Evidencia de funcionamiento:
+
+Errores encontrados:
+
+Soluciones aplicadas:
+
+Conclusión:</pre>
+
+  <h3 class="laboratorios-bloque-titulo">Evidencias que debe entregar el alumnado</h3>
+
+  <div class="laboratorios-tabla-contenedor">
+    <table class="laboratorios-tabla">
+      <thead>
+        <tr>
+          <th>Evidencia</th>
+          <th>Uso recomendado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="laboratorios-etiqueta">Captura del entorno de programación</td>
+          <td>Para demostrar creación del proyecto, compilación o carga del programa.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Fotografía del montaje</td>
+          <td>Para mostrar componentes, conexiones y organización del circuito.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Esquema de conexiones</td>
+          <td>Para justificar la relación entre pines, puertos y componentes.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Fragmento de código comentado</td>
+          <td>Para explicar la parte más importante del programa.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Vídeo breve del funcionamiento</td>
+          <td>Para evidenciar movimiento, sonido, secuencias o interacción con el sistema.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Captura del terminal serie</td>
+          <td>Para actividades con USART, envío o recepción de datos.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Tabla de valores medidos</td>
+          <td>Para registrar ADC, tensiones, frecuencias, posiciones o tiempos.</td>
+        </tr>
+        <tr>
+          <td class="laboratorios-etiqueta">Registro de errores y soluciones</td>
+          <td>Para documentar el proceso de depuración.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="laboratorios-reto">
+    <h3>Laboratorio final: sistema integrado de control</h3>
+    <p>
+      Como reto final, cada equipo diseñará una pequeña mejora o ampliación de uno de
+      los laboratorios realizados. El objetivo es demostrar que el equipo no solo reproduce
+      ejemplos, sino que es capaz de modificar, adaptar y justificar una solución propia.
+    </p>
+
+    <ul class="laboratorios-lista">
+      <li>Añadir una nueva entrada al sistema.</li>
+      <li>Incorporar una salida adicional.</li>
+      <li>Modificar la temporización.</li>
+      <li>Enviar datos por USART.</li>
+      <li>Mostrar información en LCD.</li>
+      <li>Mejorar la organización del código mediante funciones.</li>
+      <li>Cambiar el comportamiento del sistema mediante una nueva condición.</li>
+      <li>Documentar una versión optimizada del programa.</li>
+    </ul>
+  </div>
+
+  <section class="laboratorios-cierre">
+    <strong>Cierre de laboratorios:</strong>
+    los laboratorios son el espacio donde la programación se conecta con el mundo físico.
+    Cada montaje permite comprobar que una instrucción en C puede encender un LED, leer un sensor,
+    mover un servomotor, generar sonido, mostrar datos en una pantalla o comunicarse con un ordenador.
+  </section>
+
+  <div class="laboratorios-frase-final">
+    <h3>Programar también es comprobar</h3>
+    <p>
+      El reto no consiste únicamente en conseguir que el sistema funcione, sino en comprender
+      cómo funciona, justificarlo técnicamente y documentar las evidencias del proceso.
+    </p>
+  </div>
+
+  <div class="laboratorios-boton-contenedor">
+    <a class="laboratorios-boton" href="https://sites.google.com/view/delsketchalc/actividades" target="_blank" rel="noopener">
+      Ver actividades
+    </a>
+
+    <a class="laboratorios-boton laboratorios-boton-secundario" href="https://sites.google.com/view/delsketchalc/proceso" target="_blank" rel="noopener">
+      Ver proceso
+    </a>
+
+    <a class="laboratorios-boton laboratorios-boton-secundario" href="https://sites.google.com/view/delsketchalc/recursos" target="_blank" rel="noopener">
+      Consultar recursos
+    </a>
+
+    <a class="laboratorios-boton laboratorios-boton-secundario" href="https://sites.google.com/view/delsketchalc/evaluaci%C3%B3n" target="_blank" rel="noopener">
+      Ver evaluación
+    </a>
+  </div>
+</section>
