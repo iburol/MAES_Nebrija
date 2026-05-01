@@ -1,0 +1,951 @@
+<style>
+  .evaluacion-box {
+    font-family: Arial, sans-serif;
+    width: 85%;
+    max-width: 893px;
+    margin: 24px auto;
+    padding: 26px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffffff, #f4fbff);
+    border: 1px solid #d6eaf5;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    color: #1f2d3d;
+  }
+
+  .evaluacion-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .evaluacion-icono {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .evaluacion-titulo h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #003b73;
+  }
+
+  .evaluacion-titulo p {
+    margin: 4px 0 0;
+    color: #007c89;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .evaluacion-intro {
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 18px 0 22px;
+  }
+
+  .evaluacion-destacado {
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    padding: 16px 18px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .evaluacion-bloque-titulo {
+    color: #003b73;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    font-size: 23px;
+  }
+
+  .evaluacion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .evaluacion-card {
+    background: white;
+    border: 1px solid #dbeaf2;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  .evaluacion-card h3 {
+    margin-top: 0;
+    color: #005b96;
+    font-size: 19px;
+  }
+
+  .evaluacion-card p {
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
+  .evaluacion-lista {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+    font-size: 15.5px;
+  }
+
+  .evaluacion-tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 14px;
+    margin-bottom: 24px;
+  }
+
+  .evaluacion-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    font-size: 15.5px;
+    background-color: white;
+  }
+
+  .evaluacion-tabla thead {
+    background-color: #003b73;
+    color: white;
+  }
+
+  .evaluacion-tabla th,
+  .evaluacion-tabla td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5eef4;
+    vertical-align: top;
+  }
+
+  .evaluacion-tabla tbody tr:nth-child(even) {
+    background-color: #f6fbfe;
+  }
+
+  .evaluacion-tabla tbody tr:hover {
+    background-color: #eaf6fb;
+  }
+
+  .evaluacion-etiqueta {
+    font-weight: bold;
+    color: #005b96;
+  }
+
+  .evaluacion-peso {
+    font-weight: bold;
+    color: #003b73;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .evaluacion-rubrica {
+    font-size: 14.5px;
+  }
+
+  .evaluacion-rubrica th,
+  .evaluacion-rubrica td {
+    min-width: 150px;
+  }
+
+  .evaluacion-rubrica th:first-child,
+  .evaluacion-rubrica td:first-child {
+    min-width: 180px;
+  }
+
+  .evaluacion-check {
+    text-align: center;
+    font-weight: bold;
+    color: #005b96;
+  }
+
+  .evaluacion-escala {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin: 14px 0 24px;
+  }
+
+  .evaluacion-escala-card {
+    background: #ffffff;
+    border: 1px solid #dbeaf2;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .evaluacion-escala-card strong {
+    display: block;
+    color: #003b73;
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  .evaluacion-escala-card span {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .evaluacion-preguntas {
+    counter-reset: preguntas;
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 24px;
+  }
+
+  .evaluacion-preguntas li {
+    counter-increment: preguntas;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 15px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border-left: 5px solid #0097a7;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
+  .evaluacion-preguntas li::before {
+    content: counter(preguntas);
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .evaluacion-aviso {
+    margin: 18px 0 24px;
+    padding: 16px 18px;
+    background-color: #fff8e1;
+    border-left: 6px solid #ff9800;
+    border-radius: 12px;
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+
+  .evaluacion-cierre {
+    margin-top: 24px;
+    padding: 20px;
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .evaluacion-frase-final {
+    margin-top: 24px;
+    padding: 22px;
+    background: linear-gradient(135deg, #003b73, #005b96);
+    color: white;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 16px rgba(0, 59, 115, 0.25);
+  }
+
+  .evaluacion-frase-final h3 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+
+  .evaluacion-frase-final p {
+    margin-bottom: 0;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .evaluacion-boton-contenedor {
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  .evaluacion-boton {
+    display: inline-block;
+    padding: 14px 22px;
+    margin: 8px;
+    background-color: #003b73;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 59, 115, 0.25);
+  }
+
+  .evaluacion-boton:hover {
+    background-color: #005b96;
+  }
+
+  .evaluacion-boton-secundario {
+    background-color: #007c89;
+  }
+
+  .evaluacion-boton-secundario:hover {
+    background-color: #0097a7;
+  }
+
+  .evaluacion-boton-destacado {
+    background-color: #ff9800;
+  }
+
+  .evaluacion-boton-destacado:hover {
+    background-color: #e88900;
+  }
+
+  @media (max-width: 760px) {
+    .evaluacion-box {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .evaluacion-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .evaluacion-header {
+      align-items: flex-start;
+    }
+
+    .evaluacion-titulo h2 {
+      font-size: 24px;
+    }
+
+    .evaluacion-escala {
+      grid-template-columns: 1fr;
+    }
+
+    .evaluacion-boton {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+</style>
+
+<section class="evaluacion-box">
+  <div class="evaluacion-header">
+    <div class="evaluacion-icono">★</div>
+    <div class="evaluacion-titulo">
+      <h2>Evaluación de la WebQuest</h2>
+      <p>Proceso, producto técnico, documentación y defensa final</p>
+    </div>
+  </div>
+
+  <p class="evaluacion-intro">
+    La evaluación de esta WebQuest tendrá en cuenta tanto el producto final como el
+    proceso seguido por cada equipo. No se valorará únicamente que el circuito funcione,
+    sino también la capacidad para analizar el sistema, diseñar el algoritmo, interpretar
+    o desarrollar el código en C, realizar pruebas, corregir errores y documentar
+    técnicamente el trabajo realizado.
+  </p>
+
+  <div class="evaluacion-destacado">
+    <strong>Idea clave:</strong> programar sistemas con Arduino UNO en C implica analizar,
+    diseñar, probar, corregir y explicar. Por ello, se evaluará tanto el resultado técnico
+    como la capacidad del equipo para justificar sus decisiones y defender su trabajo.
+  </div>
+
+  <div class="evaluacion-grid">
+    <div class="evaluacion-card">
+      <h3>¿Qué se evaluará?</h3>
+      <ul class="evaluacion-lista">
+        <li>Análisis técnico del sistema.</li>
+        <li>Diseño del algoritmo o pseudocódigo.</li>
+        <li>Programación en C y relación hardware-software.</li>
+        <li>Pruebas, depuración y evidencias.</li>
+        <li>Memoria técnica final.</li>
+        <li>Trabajo cooperativo.</li>
+        <li>Presentación y defensa oral.</li>
+      </ul>
+    </div>
+
+    <div class="evaluacion-card">
+      <h3>¿Cómo se evaluará?</h3>
+      <ul class="evaluacion-lista">
+        <li>Rúbrica general de la WebQuest.</li>
+        <li>Lista de cotejo de cada actividad.</li>
+        <li>Revisión del código en C comentado.</li>
+        <li>Revisión de la memoria técnica.</li>
+        <li>Observación del trabajo en equipo.</li>
+        <li>Autoevaluación individual.</li>
+        <li>Coevaluación entre compañeros/as.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="evaluacion-bloque-titulo">1. Aspectos evaluados</h3>
+
+  <div class="evaluacion-tabla-contenedor">
+    <table class="evaluacion-tabla">
+      <thead>
+        <tr>
+          <th>Aspecto evaluado</th>
+          <th>Qué se valora</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="evaluacion-etiqueta">Análisis técnico</td>
+          <td>Comprensión del sistema, componentes, entradas, salidas, pines, puertos y periféricos utilizados.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Diseño del algoritmo</td>
+          <td>Capacidad para representar la lógica del programa antes de escribir código.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Programación en C</td>
+          <td>Código organizado, comentado, estructurado y relacionado con el hardware.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Pruebas y depuración</td>
+          <td>Comprobación del funcionamiento, detección de errores y aplicación de soluciones.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Documentación técnica</td>
+          <td>Calidad de la memoria, evidencias, esquemas, capturas y conclusiones.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Trabajo cooperativo</td>
+          <td>Organización del equipo, reparto de roles y participación equilibrada.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Comunicación final</td>
+          <td>Claridad en la exposición y capacidad para defender las decisiones técnicas.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="evaluacion-bloque-titulo">2. Instrumentos de evaluación</h3>
+
+  <div class="evaluacion-tabla-contenedor">
+    <table class="evaluacion-tabla">
+      <thead>
+        <tr>
+          <th>Instrumento</th>
+          <th>Uso en la WebQuest</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="evaluacion-etiqueta">Rúbrica general</td>
+          <td>Valora el proceso completo, el producto técnico y la presentación final.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Lista de cotejo</td>
+          <td>Permite comprobar si cada actividad incluye los elementos mínimos requeridos.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Código comentado</td>
+          <td>Sirve para valorar la comprensión del programa y su relación con el hardware.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Memoria técnica</td>
+          <td>Recoge análisis, algoritmo, código, pruebas, errores, soluciones y conclusión.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Evidencias de prueba</td>
+          <td>Fotografías, vídeos, capturas, terminal serie o tablas de resultados.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Autoevaluación</td>
+          <td>Permite valorar la participación individual y la reflexión personal.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Coevaluación</td>
+          <td>Permite valorar la participación y colaboración de los miembros del equipo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="evaluacion-bloque-titulo">3. Ponderación recomendada</h3>
+
+  <div class="evaluacion-tabla-contenedor">
+    <table class="evaluacion-tabla">
+      <thead>
+        <tr>
+          <th>Elemento evaluado</th>
+          <th>Peso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Análisis técnico y diseño del algoritmo</td>
+          <td class="evaluacion-peso">20 %</td>
+        </tr>
+        <tr>
+          <td>Código en C y relación hardware-software</td>
+          <td class="evaluacion-peso">25 %</td>
+        </tr>
+        <tr>
+          <td>Pruebas, depuración y evidencias</td>
+          <td class="evaluacion-peso">15 %</td>
+        </tr>
+        <tr>
+          <td>Memoria técnica final</td>
+          <td class="evaluacion-peso">20 %</td>
+        </tr>
+        <tr>
+          <td>Presentación y defensa oral</td>
+          <td class="evaluacion-peso">10 %</td>
+        </tr>
+        <tr>
+          <td>Trabajo cooperativo, autoevaluación y coevaluación</td>
+          <td class="evaluacion-peso">10 %</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td class="evaluacion-peso">100 %</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="evaluacion-bloque-titulo">4. Rúbrica general</h3>
+
+  <div class="evaluacion-tabla-contenedor">
+    <table class="evaluacion-tabla evaluacion-rubrica">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Excelente - 4</th>
+          <th>Adecuado - 3</th>
+          <th>Básico - 2</th>
+          <th>Insuficiente - 1</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="evaluacion-etiqueta">Análisis técnico</td>
+          <td>Identifica con precisión componentes, entradas, salidas, pines, puertos y periféricos. Relaciona correctamente hardware y software.</td>
+          <td>Identifica la mayoría de elementos y establece relaciones correctas, aunque con alguna imprecisión.</td>
+          <td>Identifica algunos elementos, pero el análisis es incompleto o poco justificado.</td>
+          <td>No identifica correctamente el sistema ni relaciona hardware y software.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Diseño del algoritmo</td>
+          <td>Presenta un algoritmo claro, ordenado y coherente con el funcionamiento del sistema.</td>
+          <td>Presenta un algoritmo comprensible, aunque podría mejorar en detalle o precisión.</td>
+          <td>El algoritmo es superficial o no representa completamente el funcionamiento.</td>
+          <td>No presenta algoritmo o no guarda relación con la actividad.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Programación en C</td>
+          <td>El código está organizado, comentado y utiliza correctamente registros, funciones, interrupciones o periféricos.</td>
+          <td>El código funciona y está comentado, aunque puede mejorar en organización o justificación.</td>
+          <td>El código es parcial, poco comentado o con errores de comprensión.</td>
+          <td>El código no funciona, está copiado sin comprender o no se entrega.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Relación hardware-software</td>
+          <td>Explica claramente cómo el código controla o interpreta cada componente del circuito.</td>
+          <td>Explica la relación general entre el código y el montaje.</td>
+          <td>La explicación es limitada o confusa.</td>
+          <td>No relaciona el código con el hardware.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Prueba y depuración</td>
+          <td>Realiza pruebas claras, aporta evidencias y documenta errores y soluciones.</td>
+          <td>Realiza pruebas y aporta alguna evidencia, aunque la depuración podría estar mejor explicada.</td>
+          <td>Las pruebas son escasas o las evidencias son poco claras.</td>
+          <td>No realiza pruebas o no aporta evidencias.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Memoria técnica</td>
+          <td>La documentación es completa, ordenada, técnica y bien presentada.</td>
+          <td>La memoria está completa, aunque algunos apartados podrían desarrollarse mejor.</td>
+          <td>La memoria es incompleta o poco organizada.</td>
+          <td>No entrega memoria o es insuficiente.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Trabajo cooperativo</td>
+          <td>El equipo se organiza bien, reparte tareas y todos participan de forma equilibrada.</td>
+          <td>Hay colaboración, aunque con pequeños desequilibrios.</td>
+          <td>La participación es irregular o poco coordinada.</td>
+          <td>No hay organización ni colaboración real.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Presentación final</td>
+          <td>Expone con claridad, usa vocabulario técnico y defiende correctamente el trabajo realizado.</td>
+          <td>Expone de forma comprensible, aunque con menor profundidad técnica.</td>
+          <td>La exposición es poco clara o depende demasiado de la lectura.</td>
+          <td>No explica adecuadamente el trabajo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="evaluacion-bloque-titulo">5. Lista de cotejo de cada actividad</h3>
+
+  <div class="evaluacion-tabla-contenedor">
+    <table class="evaluacion-tabla">
+      <thead>
+        <tr>
+          <th>Ítem</th>
+          <th>Sí</th>
+          <th>No</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Comprende el objetivo de la actividad.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Identifica componentes, entradas y salidas.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Relaciona pines de Arduino UNO con puertos del ATmega328P.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Identifica los periféricos utilizados: ADC, TIMER, PWM, USART, INT0, LCD, etc.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Diseña un algoritmo o pseudocódigo coherente.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Presenta código en C comentado.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Realiza pruebas de funcionamiento.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Aporta evidencias: captura, fotografía, vídeo, terminal serie o tabla de resultados.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Documenta errores encontrados y soluciones aplicadas.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Redacta una conclusión técnica.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="evaluacion-bloque-titulo">6. Escala para autoevaluación y coevaluación</h3>
+
+  <div class="evaluacion-escala">
+    <div class="evaluacion-escala-card">
+      <strong>1</strong>
+      <span>Participación insuficiente</span>
+    </div>
+    <div class="evaluacion-escala-card">
+      <strong>2</strong>
+      <span>Participación básica</span>
+    </div>
+    <div class="evaluacion-escala-card">
+      <strong>3</strong>
+      <span>Participación adecuada</span>
+    </div>
+    <div class="evaluacion-escala-card">
+      <strong>4</strong>
+      <span>Participación excelente</span>
+    </div>
+  </div>
+
+  <h3 class="evaluacion-bloque-titulo">7. Autoevaluación individual</h3>
+
+  <p class="evaluacion-intro">
+    Al finalizar la WebQuest, cada alumno/a responderá de forma individual a las siguientes preguntas.
+  </p>
+
+  <ol class="evaluacion-preguntas">
+    <li>¿Qué actividad me ha resultado más interesante? ¿Por qué?</li>
+    <li>¿Qué concepto técnico he comprendido mejor?</li>
+    <li>¿Qué parte me ha resultado más difícil?</li>
+    <li>¿Qué aportación he realizado al equipo?</li>
+    <li>¿He cumplido correctamente mi rol?</li>
+    <li>¿Qué error me ha ayudado más a aprender?</li>
+    <li>¿Qué mejoraría de mi participación?</li>
+    <li>¿Qué he aprendido sobre la relación entre programación en C y hardware?</li>
+    <li>¿Cómo podría aplicar este aprendizaje en un sistema real?</li>
+    <li>¿Qué calificación considero que merece mi trabajo individual? Justifica la respuesta.</li>
+  </ol>
+
+  <div class="evaluacion-tabla-contenedor">
+    <table class="evaluacion-tabla">
+      <thead>
+        <tr>
+          <th>Aspecto</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>He participado activamente en el equipo.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+        </tr>
+        <tr>
+          <td>He cumplido mi rol asignado.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+        </tr>
+        <tr>
+          <td>He contribuido al análisis técnico.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+        </tr>
+        <tr>
+          <td>He ayudado en la programación o interpretación del código.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+        </tr>
+        <tr>
+          <td>He participado en las pruebas y depuración.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+        </tr>
+        <tr>
+          <td>He contribuido a la memoria técnica.</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+          <td class="evaluacion-check">□</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="evaluacion-bloque-titulo">8. Coevaluación del equipo</h3>
+
+  <p class="evaluacion-intro">
+    Cada miembro del equipo valorará de forma respetuosa y justificada la participación
+    del resto de compañeros/as.
+  </p>
+
+  <div class="evaluacion-tabla-contenedor">
+    <table class="evaluacion-tabla">
+      <thead>
+        <tr>
+          <th>Compañero/a</th>
+          <th>Participación</th>
+          <th>Cumplimiento del rol</th>
+          <th>Aportación técnica</th>
+          <th>Colaboración</th>
+          <th>Observaciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td class="evaluacion-check">1 / 2 / 3 / 4</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="evaluacion-bloque-titulo">9. Evaluación de la presentación final</h3>
+
+  <div class="evaluacion-tabla-contenedor">
+    <table class="evaluacion-tabla">
+      <thead>
+        <tr>
+          <th>Criterio</th>
+          <th>Excelente</th>
+          <th>Adecuado</th>
+          <th>Básico</th>
+          <th>Insuficiente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="evaluacion-etiqueta">Claridad</td>
+          <td>Explica de forma ordenada y comprensible.</td>
+          <td>Explica correctamente, con algún aspecto mejorable.</td>
+          <td>La explicación es confusa en algunos momentos.</td>
+          <td>No se entiende el trabajo realizado.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Rigor técnico</td>
+          <td>Usa correctamente vocabulario técnico.</td>
+          <td>Usa términos técnicos adecuados, aunque con alguna imprecisión.</td>
+          <td>Usa pocos términos técnicos o de forma insegura.</td>
+          <td>No utiliza vocabulario técnico adecuado.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Evidencias</td>
+          <td>Muestra pruebas claras del funcionamiento.</td>
+          <td>Muestra alguna evidencia suficiente.</td>
+          <td>Las evidencias son escasas.</td>
+          <td>No muestra evidencias.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Participación</td>
+          <td>Intervienen varios miembros del equipo.</td>
+          <td>Participa la mayoría del equipo.</td>
+          <td>La participación está desequilibrada.</td>
+          <td>Solo participa una persona o no hay coordinación.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="evaluacion-bloque-titulo">10. Criterios de mejora</h3>
+
+  <div class="evaluacion-aviso">
+    <strong>Evaluación formativa:</strong> si una actividad no alcanza el nivel esperado,
+    el equipo podrá mejorarla revisando el análisis técnico, el algoritmo, el código,
+    las pruebas o la documentación.
+  </div>
+
+  <div class="evaluacion-tabla-contenedor">
+    <table class="evaluacion-tabla">
+      <thead>
+        <tr>
+          <th>Aspecto a mejorar</th>
+          <th>Acción recomendada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="evaluacion-etiqueta">Análisis técnico incompleto</td>
+          <td>Revisar componentes, entradas, salidas, pines, puertos y periféricos.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Algoritmo poco claro</td>
+          <td>Reescribir el pseudocódigo incluyendo estado inicial, entradas, decisiones y salidas.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Código poco comentado</td>
+          <td>Añadir comentarios que expliquen registros, funciones, interrupciones y decisiones.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Pruebas insuficientes</td>
+          <td>Repetir la prueba y aportar evidencias más claras: capturas, fotos, vídeos o terminal serie.</td>
+        </tr>
+        <tr>
+          <td class="evaluacion-etiqueta">Documentación incompleta</td>
+          <td>Completar la ficha técnica con errores, soluciones, conclusión y recursos consultados.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="evaluacion-cierre">
+    <strong>Cierre de evaluación:</strong> la evaluación de esta WebQuest no busca únicamente comprobar
+    si el resultado funciona, sino valorar el proceso completo de trabajo. Un buen proyecto
+    no es solo el que funciona, sino el que puede comprenderse, explicarse, mejorarse y
+    defenderse técnicamente.
+  </div>
+
+  <div class="evaluacion-frase-final">
+    <h3>Evaluar también es mejorar</h3>
+    <p>
+      La evaluación debe ayudar a reconocer lo aprendido, detectar dificultades,
+      corregir errores y justificar técnicamente las decisiones tomadas durante el proyecto.
+    </p>
+  </div>
+
+  <div class="evaluacion-boton-contenedor">
+    <a class="evaluacion-boton" href="https://sites.google.com/view/delsketchalc/actividades" target="_blank" rel="noopener">
+      Ver actividades
+    </a>
+
+    <a class="evaluacion-boton evaluacion-boton-secundario" href="https://sites.google.com/view/delsketchalc/proceso" target="_blank" rel="noopener">
+      Ver proceso
+    </a>
+
+    <a class="evaluacion-boton evaluacion-boton-secundario" href="https://sites.google.com/view/delsketchalc/laboratorios" target="_blank" rel="noopener">
+      Ir a laboratorios
+    </a>
+
+    <a class="evaluacion-boton evaluacion-boton-secundario" href="https://sites.google.com/view/delsketchalc/recursos" target="_blank" rel="noopener">
+      Consultar recursos
+    </a>
+
+    <a class="evaluacion-boton evaluacion-boton-destacado" href="https://sites.google.com/view/delsketchalc/gu%C3%ADa-docente" target="_blank" rel="noopener">
+      Guía docente
+    </a>
+
+    <a class="evaluacion-boton evaluacion-boton-destacado" href="https://sites.google.com/view/delsketchalc/conclusi%C3%B3n" target="_blank" rel="noopener">
+      Ir a conclusión
+    </a>
+  </div>
+</section>
