@@ -1,0 +1,1187 @@
+<style>
+  .actividades-box {
+    font-family: Arial, sans-serif;
+    width: 85%;
+    max-width: 893px;
+    margin: 24px auto;
+    padding: 26px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffffff, #f4fbff);
+    border: 1px solid #d6eaf5;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    color: #1f2d3d;
+  }
+
+  .actividades-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .actividades-icono {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .actividades-titulo h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #003b73;
+  }
+
+  .actividades-titulo p {
+    margin: 4px 0 0;
+    color: #007c89;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .actividades-texto {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 18px 0;
+  }
+
+  .actividades-destacado {
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin: 24px 0;
+    font-size: 16.5px;
+    line-height: 1.6;
+  }
+
+  .actividades-destacado strong {
+    color: #003b73;
+  }
+
+  .actividades-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .actividades-card {
+    background: white;
+    border: 1px solid #dbeaf2;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  .actividades-card h3 {
+    margin-top: 0;
+    color: #005b96;
+    font-size: 19px;
+  }
+
+  .actividades-lista {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+    font-size: 15.5px;
+  }
+
+  .actividades-bloque-titulo {
+    color: #003b73;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    font-size: 23px;
+  }
+
+  .actividades-tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 14px;
+    margin-bottom: 24px;
+  }
+
+  .actividades-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    font-size: 15.5px;
+    background-color: white;
+  }
+
+  .actividades-tabla thead {
+    background-color: #003b73;
+    color: white;
+  }
+
+  .actividades-tabla th,
+  .actividades-tabla td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5eef4;
+    vertical-align: top;
+  }
+
+  .actividades-tabla tbody tr:nth-child(even) {
+    background-color: #f6fbfe;
+  }
+
+  .actividades-tabla tbody tr:hover {
+    background-color: #eaf6fb;
+  }
+
+  .actividades-etiqueta {
+    font-weight: bold;
+    color: #005b96;
+  }
+
+  .actividad-item {
+    background: #ffffff;
+    border: 1px solid #dbeaf2;
+    border-radius: 16px;
+    margin: 16px 0;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+
+  .actividad-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #ffffff, #f6fbfe);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .actividad-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .actividad-numero {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+    font-size: 20px;
+  }
+
+  .actividad-summary-text {
+    flex: 1;
+  }
+
+  .actividad-summary-text h3 {
+    margin: 0;
+    color: #003b73;
+    font-size: 21px;
+  }
+
+  .actividad-summary-text p {
+    margin: 4px 0 0;
+    color: #007c89;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .actividad-flecha {
+    color: #005b96;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .actividad-contenido {
+    padding: 20px;
+    border-top: 1px solid #e5eef4;
+  }
+
+  .actividad-resumen {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 0;
+  }
+
+  .actividad-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0;
+  }
+
+  .actividad-tag {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background-color: #eaf7fb;
+    color: #005b96;
+    border: 1px solid #c9e7ef;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .actividad-subtitulo {
+    color: #003b73;
+    margin: 18px 0 10px;
+    font-size: 18px;
+  }
+
+  .actividad-pasos {
+    margin: 0;
+    padding-left: 22px;
+    line-height: 1.6;
+    font-size: 15.5px;
+  }
+
+  .actividad-info {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 14px;
+    background-color: #003b73;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0, 59, 115, 0.20);
+  }
+
+  .actividad-info:hover {
+    background-color: #005b96;
+  }
+
+  .actividad-nota {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background-color: #fff8e1;
+    border-left: 6px solid #ff9800;
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .actividades-cierre {
+    margin-top: 28px;
+    padding: 22px;
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .actividades-frase-final {
+    margin-top: 24px;
+    padding: 22px;
+    background: linear-gradient(135deg, #003b73, #005b96);
+    color: white;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 16px rgba(0, 59, 115, 0.25);
+  }
+
+  .actividades-frase-final h3 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+
+  .actividades-frase-final p {
+    margin-bottom: 0;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .actividades-boton-contenedor {
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  .actividades-boton {
+    display: inline-block;
+    padding: 14px 22px;
+    margin: 8px;
+    background-color: #003b73;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 59, 115, 0.25);
+  }
+
+  .actividades-boton:hover {
+    background-color: #005b96;
+  }
+
+  .actividades-boton-secundario {
+    background-color: #007c89;
+  }
+
+  .actividades-boton-secundario:hover {
+    background-color: #0097a7;
+  }
+
+  @media (max-width: 760px) {
+    .actividades-box {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .actividades-header {
+      align-items: flex-start;
+    }
+
+    .actividades-titulo h2 {
+      font-size: 24px;
+    }
+
+    .actividades-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .actividad-item summary {
+      align-items: flex-start;
+    }
+
+    .actividad-summary-text h3 {
+      font-size: 18px;
+    }
+
+    .actividades-boton {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+</style>
+
+<section class="actividades-box">
+  <div class="actividades-header">
+    <div class="actividades-icono">☑</div>
+    <div class="actividades-titulo">
+      <h2>Actividades</h2>
+      <p>Retos técnicos para pasar del sketch al C</p>
+    </div>
+  </div>
+
+  <p class="actividades-texto">
+    En esta sección encontrarás las actividades de la WebQuest <strong>“Del Sketch al C”</strong>.
+    Cada actividad parte de un ejemplo práctico de Arduino UNO y lo trabaja desde el enfoque de
+    la programación en C, relacionando código, hardware, periféricos del ATmega328P y documentación técnica.
+  </p>
+
+  <div class="actividades-destacado">
+    <strong>Idea clave:</strong> no se trata de copiar programas, sino de comprender cómo funciona
+    cada sistema, identificar entradas y salidas, analizar los periféricos utilizados, diseñar el algoritmo,
+    comentar el código y comprobar el funcionamiento mediante pruebas.
+  </div>
+
+  <div class="actividades-grid">
+    <div class="actividades-card">
+      <h3>¿Qué debe hacer el equipo?</h3>
+      <ul class="actividades-lista">
+        <li>Leer la actividad y consultar el recurso asociado.</li>
+        <li>Analizar componentes, entradas, salidas, pines y puertos.</li>
+        <li>Diseñar el algoritmo o pseudocódigo.</li>
+        <li>Interpretar o desarrollar el programa en C.</li>
+        <li>Probar el sistema y documentar evidencias.</li>
+      </ul>
+    </div>
+
+    <div class="actividades-card">
+      <h3>¿Qué se entrega?</h3>
+      <ul class="actividades-lista">
+        <li>Ficha técnica de la actividad.</li>
+        <li>Algoritmo o diagrama de flujo.</li>
+        <li>Código en C comentado.</li>
+        <li>Evidencias de funcionamiento.</li>
+        <li>Errores encontrados y soluciones aplicadas.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="actividades-bloque-titulo">Ruta de actividades</h3>
+
+  <div class="actividades-tabla-contenedor">
+    <table class="actividades-tabla">
+      <thead>
+        <tr>
+          <th>Bloque</th>
+          <th>Actividades</th>
+          <th>Aprendizaje principal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="actividades-etiqueta">Preparación</td>
+          <td>Actividad 1</td>
+          <td>Configuración del entorno para programar Arduino UNO en C.</td>
+        </tr>
+        <tr>
+          <td class="actividades-etiqueta">Salidas, entradas e interrupciones</td>
+          <td>Actividades 2 y 7</td>
+          <td>LEDs, TIMER1, INT0, antirrebote y secuencias.</td>
+        </tr>
+        <tr>
+          <td class="actividades-etiqueta">Sensores, ADC y PWM</td>
+          <td>Actividades 3, 4, 5, 6 y 12</td>
+          <td>Lectura analógica, generación PWM, sonido, servo, temperatura y color.</td>
+        </tr>
+        <tr>
+          <td class="actividades-etiqueta">LCD y visualización</td>
+          <td>Actividades 8 y 9</td>
+          <td>Pantalla LCD, mensajes, datos numéricos y conversión ASCII.</td>
+        </tr>
+        <tr>
+          <td class="actividades-etiqueta">Potencia y temporización</td>
+          <td>Actividades 10 y 11</td>
+          <td>MOSFET, motor CC, zumbador, TIMER0, TIMER1 y reinicio.</td>
+        </tr>
+        <tr>
+          <td class="actividades-etiqueta">Comunicación serie</td>
+          <td>Actividades 13, 14, 15 y 16</td>
+          <td>USART, buffers, envío de bytes, cadenas y control desde el ordenador.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="actividades-destacado">
+    <strong>Selección recomendada:</strong> no será necesario realizar todas las actividades.
+    El profesorado seleccionará las más adecuadas según el tiempo disponible, los recursos del aula
+    y el nivel del grupo. Cada equipo deberá trabajar, como mínimo, una actividad con salida digital
+    o interrupciones, una con ADC, una con PWM o temporizadores y una con LCD o comunicación serie.
+  </div>
+
+  <h3 class="actividades-bloque-titulo">Listado de actividades</h3>
+
+  <details class="actividad-item" open>
+    <summary>
+      <span class="actividad-numero">1</span>
+      <span class="actividad-summary-text">
+        <h3>Configuración del entorno</h3>
+        <p>Preparar Arduino IDE y Atmel Studio para programar en C</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta primera actividad prepararéis las herramientas necesarias para programar Arduino UNO en ANSI C.
+        El objetivo es dejar listo el entorno de trabajo antes de comenzar con los primeros ejemplos prácticos.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">Arduino IDE</span>
+        <span class="actividad-tag">Atmel Studio</span>
+        <span class="actividad-tag">Configuración</span>
+        <span class="actividad-tag">Carga de programas</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Instalar Arduino IDE y Atmel Studio.</li>
+        <li>Activar la salida detallada durante la carga.</li>
+        <li>Consultar el comando de subida del programa.</li>
+        <li>Configurar External Tools en Atmel Studio.</li>
+        <li>Realizar una prueba de compilación y carga.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/01/25/primer-post-configuracion/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">2</span>
+      <span class="actividad-summary-text">
+        <h3>Blink con TIMER1 e interrupciones</h3>
+        <p>Parpadeo del LED integrado usando C, TIMER1 y CTC</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad realizaréis el primer programa práctico en C para Arduino UNO: el parpadeo del LED integrado.
+        A diferencia del sketch clásico, trabajaréis directamente con el ATmega328P, configurando el pin de salida y el TIMER1.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">LED D13</span>
+        <span class="actividad-tag">PB5</span>
+        <span class="actividad-tag">TIMER1</span>
+        <span class="actividad-tag">Interrupciones</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Crear un proyecto en Atmel Studio para ATmega328P.</li>
+        <li>Configurar PB5 / pin 13 como salida.</li>
+        <li>Configurar el TIMER1 en modo CTC.</li>
+        <li>Habilitar la interrupción por comparación.</li>
+        <li>Invertir el estado del LED desde la rutina de interrupción.</li>
+        <li>Compilar, cargar y comprobar el programa.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/01/26/167/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">3</span>
+      <span class="actividad-summary-text">
+        <h3>Light Theremin</h3>
+        <p>La luz controla el sonido mediante ADC y PWM</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad crearéis un pequeño theremin de luz. El sistema leerá la luminosidad mediante una fotoresistencia
+        conectada al ADC y utilizará ese valor para modificar la frecuencia de una señal PWM aplicada a un zumbador.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">LDR</span>
+        <span class="actividad-tag">ADC0</span>
+        <span class="actividad-tag">PWM</span>
+        <span class="actividad-tag">Buzzer</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con fotoresistencia, resistencia de 10 kΩ y buzzer.</li>
+        <li>Leer la señal de luz mediante el canal ADC0.</li>
+        <li>Configurar el TIMER1 para generar PWM.</li>
+        <li>Asociar el zumbador a la salida OCR1B.</li>
+        <li>Transformar el valor del ADC en una frecuencia de sonido.</li>
+        <li>Probar cómo cambia el tono al variar la luz.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/02/18/light-theremin/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">4</span>
+      <span class="actividad-summary-text">
+        <h3>Mood Cue</h3>
+        <p>Control de un servomotor mediante potenciómetro, ADC y PWM</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad controlaréis la posición de un servomotor mediante un potenciómetro.
+        La lectura analógica se transforma en una señal PWM generada con el TIMER1.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">Potenciómetro</span>
+        <span class="actividad-tag">ADC0</span>
+        <span class="actividad-tag">Servo</span>
+        <span class="actividad-tag">OCR1A</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con potenciómetro, servomotor y condensadores de protección.</li>
+        <li>Conectar el potenciómetro a ADC0 / A0 / PORTC0.</li>
+        <li>Conectar el servomotor a OC1A / PORTB1.</li>
+        <li>Configurar el ADC para leer la posición del potenciómetro.</li>
+        <li>Configurar el TIMER1 para generar la señal PWM.</li>
+        <li>Escalar la lectura del ADC a un rango aproximado de 0º a 180º.</li>
+        <li>Modificar OCR1A para controlar la posición del servo.</li>
+        <li>Probar el movimiento del servomotor al girar el potenciómetro.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/02/12/mood-cue/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">5</span>
+      <span class="actividad-summary-text">
+        <h3>Color Mixing Lamp</h3>
+        <p>Tres sensores de luz controlan un LED RGB</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad crearéis una lámpara mezcladora de colores. Tres fotoresistencias medirán la luz recibida
+        y cada sensor controlará la intensidad de uno de los colores del LED RGB mediante PWM.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">3 LDR</span>
+        <span class="actividad-tag">ADC</span>
+        <span class="actividad-tag">LED RGB</span>
+        <span class="actividad-tag">PWM</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con tres fotoresistencias, resistencias y un LED RGB.</li>
+        <li>Conectar las fotoresistencias a A0, A1 y A2.</li>
+        <li>Conectar los canales rojo, verde y azul del LED RGB a salidas PWM.</li>
+        <li>Configurar los puertos de entrada y salida.</li>
+        <li>Leer los tres canales analógicos mediante el ADC.</li>
+        <li>Configurar TIMER0 y TIMER1 para generar PWM.</li>
+        <li>Modificar el duty cycle de cada color según la luz recibida.</li>
+        <li>Probar distintas combinaciones de luz y observar la mezcla de colores.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/02/07/color-mixing-lamp/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">6</span>
+      <span class="actividad-summary-text">
+        <h3>Love-O-Meter</h3>
+        <p>Medidor de temperatura con TMP36, ADC y LEDs</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad crearéis un medidor de temperatura. El sistema leerá la señal analógica del sensor TMP36,
+        calculará la temperatura aproximada y encenderá LEDs según el nivel detectado.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">TMP36</span>
+        <span class="actividad-tag">ADC0</span>
+        <span class="actividad-tag">LEDs</span>
+        <span class="actividad-tag">Condiciones</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con TMP36, tres LEDs y resistencias de 220 Ω.</li>
+        <li>Conectar el sensor TMP36 a la entrada analógica ADC0 / PC0.</li>
+        <li>Conectar los LEDs a salidas digitales del microcontrolador.</li>
+        <li>Configurar los puertos de E/S.</li>
+        <li>Configurar el ADC y su interrupción de conversión completada.</li>
+        <li>Convertir la lectura ADC en tensión.</li>
+        <li>Calcular la temperatura a partir de la tensión del TMP36.</li>
+        <li>Comparar la temperatura con la temperatura base.</li>
+        <li>Encender los LEDs según el nivel de temperatura detectado.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/02/01/love-o-meter/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">7</span>
+      <span class="actividad-summary-text">
+        <h3>Spaceship Interface</h3>
+        <p>Pulsador, INT0, antirrebote y secuencia de LEDs</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad programaréis una interfaz luminosa. Un pulsador activa una secuencia temporizada
+        con un LED verde y dos LEDs rojos, trabajando interrupción externa y antirrebote.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">Pulsador</span>
+        <span class="actividad-tag">INT0</span>
+        <span class="actividad-tag">TIMER1</span>
+        <span class="actividad-tag">Antirrebote</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con tres LEDs, un pulsador y resistencias.</li>
+        <li>Conectar el LED verde y los dos LEDs rojos a salidas digitales.</li>
+        <li>Conectar el pulsador a la entrada INT0.</li>
+        <li>Configurar los puertos de entrada y salida.</li>
+        <li>Detectar la pulsación mediante interrupción externa.</li>
+        <li>Aplicar una espera antirrebote.</li>
+        <li>Configurar TIMER1 para generar intervalos de 0,5 segundos.</li>
+        <li>Ejecutar la secuencia de LEDs y volver al estado inicial.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/01/29/spaceship-interface/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">8</span>
+      <span class="actividad-summary-text">
+        <h3>Crystal Ball</h3>
+        <p>LCD, pulsador, INT0 y respuestas aleatorias</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad crearéis una bola mágica electrónica. Al pulsar un botón, Arduino detectará el evento,
+        generará una respuesta aleatoria y la mostrará en una pantalla LCD.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">LCD 16x2</span>
+        <span class="actividad-tag">Pulsador</span>
+        <span class="actividad-tag">INT0</span>
+        <span class="actividad-tag">Aleatoriedad</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con pantalla LCD, pulsador, potenciómetro y resistencias.</li>
+        <li>Configurar el LCD en modo de 4 bits.</li>
+        <li>Conectar las líneas de datos D4-D7 del LCD a Arduino UNO.</li>
+        <li>Conectar los pines de control RS, R/W y E.</li>
+        <li>Ajustar el contraste del LCD mediante el potenciómetro.</li>
+        <li>Conectar el pulsador a INT0 / PORTD2.</li>
+        <li>Inicializar el LCD desde el programa.</li>
+        <li>Mostrar un mensaje inicial.</li>
+        <li>Detectar la pulsación y generar una respuesta aleatoria.</li>
+        <li>Mostrar la respuesta en la pantalla LCD.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/04/03/crystal-ball/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">9</span>
+      <span class="actividad-summary-text">
+        <h3>Crystal Ball II</h3>
+        <p>Visualización en tiempo real de tensión y resistencia en LCD</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad transformaréis el proyecto Crystal Ball en un sistema de visualización en tiempo real.
+        El sistema leerá un potenciómetro y mostrará en el LCD la tensión y el valor óhmico aproximado.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">Potenciómetro</span>
+        <span class="actividad-tag">ADC</span>
+        <span class="actividad-tag">LCD</span>
+        <span class="actividad-tag">ASCII</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con potenciómetro y pantalla LCD.</li>
+        <li>Conectar el potenciómetro al canal ADC0.</li>
+        <li>Configurar el ADC en 8 bits y trabajar con ADCH.</li>
+        <li>Inicializar la pantalla LCD.</li>
+        <li>Mostrar etiquetas fijas para resistencia y tensión.</li>
+        <li>Leer el valor actual del ADC.</li>
+        <li>Comparar medida actual y medida anterior.</li>
+        <li>Convertir la lectura a tensión y a valor óhmico.</li>
+        <li>Descomponer los valores en dígitos.</li>
+        <li>Enviar los caracteres al LCD mediante lcdWrite().</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/04/20/crystal-ball-ii/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">10</span>
+      <span class="actividad-summary-text">
+        <h3>Motorized Pinwheel</h3>
+        <p>Control de motor CC con pulsador, MOSFET y diodo</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad controlaréis un motor de corriente continua mediante un pulsador.
+        El sistema utiliza un MOSFET como interruptor electrónico y un diodo de protección frente a picos de tensión.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">Motor CC</span>
+        <span class="actividad-tag">MOSFET</span>
+        <span class="actividad-tag">Diodo</span>
+        <span class="actividad-tag">INT0</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con motor CC, MOSFET, diodo, batería de 9 V, pulsador y resistencia de 10 kΩ.</li>
+        <li>Conectar la puerta del MOSFET al pin 9 / PORTB1.</li>
+        <li>Alimentar el motor mediante la batería de 9 V.</li>
+        <li>Colocar el diodo en paralelo con el motor.</li>
+        <li>Conectar el pulsador al pin 2 / PORTD2 / INT0.</li>
+        <li>Configurar PORTB1 como salida.</li>
+        <li>Configurar INT0 para detectar la pulsación.</li>
+        <li>Invertir el estado del motor en la rutina de interrupción.</li>
+        <li>Aplicar una espera antirrebote.</li>
+        <li>Comprobar el encendido y apagado del motor.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/03/15/motorized-pinwheel/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">11</span>
+      <span class="actividad-summary-text">
+        <h3>Digital Hourglass</h3>
+        <p>Reloj de arena digital con LEDs, temporizadores y zumbador</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad programaréis un reloj de arena digital. Seis LEDs representan el paso del tiempo
+        y un zumbador se activa al finalizar la cuenta. Un pulsador permite reiniciar el sistema.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">6 LEDs</span>
+        <span class="actividad-tag">TIMER1</span>
+        <span class="actividad-tag">TIMER0/PWM</span>
+        <span class="actividad-tag">INT0</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con seis LEDs, pulsador, zumbador y resistencias.</li>
+        <li>Conectar los LEDs al PORTB, desde PB0 hasta PB5.</li>
+        <li>Conectar el pulsador a INT0.</li>
+        <li>Conectar el zumbador a una salida PWM.</li>
+        <li>Configurar los puertos de entrada y salida.</li>
+        <li>Configurar TIMER1 para generar la base de tiempo.</li>
+        <li>Contar segundos y minutos mediante variables.</li>
+        <li>Encender los LEDs de forma secuencial.</li>
+        <li>Activar el zumbador al finalizar la cuenta.</li>
+        <li>Reiniciar el sistema mediante el pulsador.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/03/04/digital-hourglass/" target="_blank" rel="noopener">
+        + Info
+      </a>
+
+      <div class="actividad-nota">
+        <strong>Adaptación de aula:</strong> puede reducirse la temporización para que un LED se active cada 10 segundos,
+        en lugar de trabajar con intervalos largos.
+      </div>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">12</span>
+      <span class="actividad-summary-text">
+        <h3>Keyboard Instrument</h3>
+        <p>Teclado musical con pulsadores, ADC y PWM</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad crearéis un teclado musical. Cuatro pulsadores conectados mediante una escalera de resistencias
+        generan distintos niveles de tensión que el ADC interpreta para seleccionar una nota musical.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">4 pulsadores</span>
+        <span class="actividad-tag">Escalera de resistencias</span>
+        <span class="actividad-tag">ADC</span>
+        <span class="actividad-tag">Buzzer</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con cuatro pulsadores, resistencias y zumbador.</li>
+        <li>Construir la escalera de resistencias.</li>
+        <li>Conectar la salida de la escalera al ADC0 / PC0.</li>
+        <li>Conectar el zumbador a la salida PWM del TIMER1.</li>
+        <li>Configurar los puertos de entrada y salida.</li>
+        <li>Inicializar el ADC y su interrupción de conversión completada.</li>
+        <li>Leer el valor analógico generado por cada pulsador.</li>
+        <li>Comparar la lectura con los intervalos definidos.</li>
+        <li>Asociar cada intervalo a una frecuencia musical.</li>
+        <li>Generar el tono correspondiente mediante PWM.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/02/25/keyboard-instrument/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">13</span>
+      <span class="actividad-summary-text">
+        <h3>Serial Communication IV</h3>
+        <p>Control de servomotor mediante órdenes recibidas por USART</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad controlaréis la posición de un servomotor enviando el ángulo deseado por el puerto serie.
+        El sistema recibe tres caracteres ASCII, los convierte a número y actualiza el PWM del servo.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">USART RX</span>
+        <span class="actividad-tag">ASCII</span>
+        <span class="actividad-tag">Servo</span>
+        <span class="actividad-tag">TIMER1/PWM</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con Arduino UNO y servomotor.</li>
+        <li>Conectar la señal del servo a OC1A / PORTB1.</li>
+        <li>Configurar PORTB1 como salida.</li>
+        <li>Configurar TIMER1 para generar PWM de control del servo.</li>
+        <li>Inicializar USART a 9600 baudios.</li>
+        <li>Habilitar la recepción serie y su interrupción.</li>
+        <li>Recibir tres caracteres ASCII en un buffer.</li>
+        <li>Convertir los caracteres recibidos a grados.</li>
+        <li>Calcular el valor de OCR1A.</li>
+        <li>Enviar distintos ángulos por el terminal serie y comprobar el movimiento del servo.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/06/16/serial-communication-iv/" target="_blank" rel="noopener">
+        + Info
+      </a>
+
+      <div class="actividad-nota">
+        <strong>Importante:</strong> el ángulo debe enviarse siempre con tres cifras: 000, 045, 090, 135 o 180.
+      </div>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">14</span>
+      <span class="actividad-summary-text">
+        <h3>Serial Communication III</h3>
+        <p>Envío de cadenas por USART mediante buffer de transmisión</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad enviaréis cadenas de caracteres desde Arduino UNO al ordenador.
+        El programa utiliza un buffer de transmisión y la interrupción de registro de datos vacío.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">USART TX</span>
+        <span class="actividad-tag">Buffer</span>
+        <span class="actividad-tag">UDR0</span>
+        <span class="actividad-tag">UDRE</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Crear un proyecto para Arduino UNO / ATmega328P.</li>
+        <li>Configurar la USART a 9600 baudios.</li>
+        <li>Crear un buffer de transmisión.</li>
+        <li>Añadir caracteres al buffer mediante una función.</li>
+        <li>Leer una cadena de texto carácter a carácter.</li>
+        <li>Activar la interrupción de registro de datos vacío.</li>
+        <li>Enviar cada carácter escribiéndolo en UDR0.</li>
+        <li>Controlar el número de bytes enviados.</li>
+        <li>Deshabilitar la interrupción al finalizar la transmisión.</li>
+        <li>Comprobar el mensaje en el terminal serie.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/05/20/serial-communication-iii/" target="_blank" rel="noopener">
+        + Info
+      </a>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">15</span>
+      <span class="actividad-summary-text">
+        <h3>Serial Communication II</h3>
+        <p>Envío de lectura ADC de 10 bits mediante ADCL y ADCH</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad enviaréis por el puerto serie la lectura completa de 10 bits del ADC.
+        Arduino realiza conversiones periódicas y transmite los bytes ADCL y ADCH mediante USART.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">ADC 10 bits</span>
+        <span class="actividad-tag">ADCL/ADCH</span>
+        <span class="actividad-tag">TIMER1</span>
+        <span class="actividad-tag">USART</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con un potenciómetro conectado a ADC0.</li>
+        <li>Configurar el ADC con resolución de 10 bits.</li>
+        <li>Configurar TIMER1 para generar una base de muestreo periódica.</li>
+        <li>Configurar la USART a 9600 baudios.</li>
+        <li>Guardar ADCL y ADCH en un buffer de dos posiciones.</li>
+        <li>Activar la interrupción USART_UDRE_vect.</li>
+        <li>Enviar cada byte escribiéndolo en UDR0.</li>
+        <li>Controlar el número de bytes enviados.</li>
+        <li>Deshabilitar la interrupción al finalizar la transmisión.</li>
+        <li>Comprobar la recepción de datos en el terminal serie.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/05/11/serial-communication-ii/" target="_blank" rel="noopener">
+        + Info
+      </a>
+
+      <div class="actividad-nota">
+        <strong>Atención:</strong> para reconstruir correctamente el valor ADC completo hay que conocer el orden de envío de ADCL y ADCH.
+      </div>
+    </div>
+  </details>
+
+  <details class="actividad-item">
+    <summary>
+      <span class="actividad-numero">16</span>
+      <span class="actividad-summary-text">
+        <h3>Serial Communication</h3>
+        <p>Envío de una lectura analógica de 1 byte por USART</p>
+      </span>
+      <span class="actividad-flecha">+</span>
+    </summary>
+
+    <div class="actividad-contenido">
+      <p class="actividad-resumen">
+        En esta actividad enviaréis al ordenador la lectura de un potenciómetro mediante el puerto serie.
+        Arduino leerá ADC0, guardará el resultado en un dato de 1 byte y lo transmitirá mediante USART.
+      </p>
+
+      <div class="actividad-tags">
+        <span class="actividad-tag">Potenciómetro</span>
+        <span class="actividad-tag">ADC0</span>
+        <span class="actividad-tag">ADCH</span>
+        <span class="actividad-tag">USART</span>
+      </div>
+
+      <h4 class="actividad-subtitulo">Pasos principales</h4>
+      <ol class="actividad-pasos">
+        <li>Montar el circuito con un potenciómetro conectado a ADC0.</li>
+        <li>Configurar el ADC para leer la entrada analógica.</li>
+        <li>Trabajar con ADCH como dato de 8 bits.</li>
+        <li>Configurar TIMER1 como base de muestreo.</li>
+        <li>Generar unas 100 muestras por segundo.</li>
+        <li>Configurar la USART a 9600 baudios.</li>
+        <li>Guardar el dato leído en la interrupción del ADC.</li>
+        <li>Activar la interrupción USART_UDRE_vect.</li>
+        <li>Enviar el dato escribiéndolo en UDR0.</li>
+        <li>Visualizar la recepción en el terminal serie.</li>
+      </ol>
+
+      <a class="actividad-info" href="https://electroprogramacionblog.wordpress.com/2015/05/07/serial-communication/" target="_blank" rel="noopener">
+        + Info
+      </a>
+
+      <div class="actividad-nota">
+        <strong>Nota didáctica:</strong> el dato enviado no es una cadena de texto, sino un byte procedente de ADCH.
+      </div>
+    </div>
+  </details>
+
+  <section class="actividades-cierre">
+    <strong>Cierre de actividades:</strong>
+    cada actividad debe trabajarse siguiendo el proceso técnico de la WebQuest:
+    comprender el sistema, analizar el hardware, diseñar el algoritmo, interpretar o escribir el código en C,
+    probar el funcionamiento y documentar las evidencias.
+  </section>
+
+  <div class="actividades-frase-final">
+    <h3>Del ejemplo al razonamiento técnico</h3>
+    <p>
+      Las actividades no son ejercicios aislados. Cada una ayuda a comprender cómo un programa en C
+      puede leer señales, tomar decisiones, controlar salidas, comunicarse con otros sistemas y documentarse
+      como una solución técnica completa.
+    </p>
+  </div>
+
+  <div class="actividades-boton-contenedor">
+    <a class="actividades-boton" href="https://sites.google.com/view/delsketchalc/proceso" target="_blank" rel="noopener">
+      Ver proceso
+    </a>
+
+    <a class="actividades-boton actividades-boton-secundario" href="https://sites.google.com/view/delsketchalc/laboratorios" target="_blank" rel="noopener">
+      Ir a laboratorios
+    </a>
+
+    <a class="actividades-boton actividades-boton-secundario" href="https://sites.google.com/view/delsketchalc/recursos" target="_blank" rel="noopener">
+      Consultar recursos
+    </a>
+
+    <a class="actividades-boton actividades-boton-secundario" href="https://sites.google.com/view/delsketchalc/evaluaci%C3%B3n" target="_blank" rel="noopener">
+      Ver evaluación
+    </a>
+  </div>
+</section>
