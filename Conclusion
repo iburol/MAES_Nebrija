@@ -1,0 +1,477 @@
+<style>
+  .conclusion-box {
+    font-family: Arial, sans-serif;
+    width: 85%;
+    max-width: 900px;
+    margin: 24px auto;
+    padding: 26px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #ffffff, #f4fbff);
+    border: 1px solid #d6eaf5;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    color: #1f2d3d;
+  }
+
+  .conclusion-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .conclusion-icono {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .conclusion-titulo h2 {
+    margin: 0;
+    font-size: 30px;
+    color: #003b73;
+  }
+
+  .conclusion-titulo p {
+    margin: 4px 0 0;
+    color: #007c89;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .conclusion-texto {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 18px 0;
+  }
+
+  .conclusion-destacado {
+    background-color: #eaf7fb;
+    border-left: 6px solid #0097a7;
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin: 24px 0;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .conclusion-destacado strong {
+    color: #003b73;
+  }
+
+  .conclusion-bloque-titulo {
+    color: #003b73;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    font-size: 23px;
+  }
+
+  .conclusion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .conclusion-card {
+    background: white;
+    border: 1px solid #dbeaf2;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  .conclusion-card h3 {
+    margin-top: 0;
+    color: #005b96;
+    font-size: 19px;
+  }
+
+  .conclusion-card p {
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .conclusion-lista {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.6;
+    font-size: 15.5px;
+  }
+
+  .conclusion-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 24px;
+  }
+
+  .conclusion-tag {
+    display: inline-block;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background-color: #eaf7fb;
+    color: #005b96;
+    border: 1px solid #c9e7ef;
+    font-size: 13.5px;
+    font-weight: bold;
+  }
+
+  .conclusion-preguntas {
+    counter-reset: preguntas;
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 24px;
+  }
+
+  .conclusion-preguntas li {
+    counter-increment: preguntas;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 15px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border-left: 5px solid #0097a7;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 15.5px;
+    line-height: 1.5;
+  }
+
+  .conclusion-preguntas li::before {
+    content: counter(preguntas);
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #003b73;
+    color: white;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .conclusion-tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 14px;
+    margin-bottom: 24px;
+  }
+
+  .conclusion-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+    font-size: 15.5px;
+    background-color: white;
+  }
+
+  .conclusion-tabla thead {
+    background-color: #003b73;
+    color: white;
+  }
+
+  .conclusion-tabla th,
+  .conclusion-tabla td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5eef4;
+    vertical-align: top;
+  }
+
+  .conclusion-tabla tbody tr:nth-child(even) {
+    background-color: #f6fbfe;
+  }
+
+  .conclusion-tabla tbody tr:hover {
+    background-color: #eaf6fb;
+  }
+
+  .conclusion-etiqueta {
+    font-weight: bold;
+    color: #005b96;
+  }
+
+  .conclusion-futuro {
+    margin-top: 24px;
+    padding: 20px;
+    background-color: #fff8e1;
+    border-left: 6px solid #ff9800;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .conclusion-futuro strong {
+    color: #8a5a00;
+  }
+
+  .conclusion-frase-final {
+    margin-top: 28px;
+    padding: 24px;
+    background: linear-gradient(135deg, #003b73, #005b96);
+    color: white;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 16px rgba(0, 59, 115, 0.25);
+  }
+
+  .conclusion-frase-final h3 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+
+  .conclusion-frase-final p {
+    margin-bottom: 0;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .conclusion-botones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .conclusion-boton {
+    display: inline-block;
+    padding: 13px 18px;
+    background-color: #003b73;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 15.5px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 59, 115, 0.25);
+  }
+
+  .conclusion-boton:hover {
+    background-color: #005b96;
+  }
+
+  .conclusion-boton-secundario {
+    background-color: #007c89;
+  }
+
+  .conclusion-boton-secundario:hover {
+    background-color: #0097a7;
+  }
+
+  @media (max-width: 760px) {
+    .conclusion-box {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .conclusion-header {
+      align-items: flex-start;
+    }
+
+    .conclusion-titulo h2 {
+      font-size: 24px;
+    }
+
+    .conclusion-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .conclusion-botones {
+      flex-direction: column;
+    }
+
+    .conclusion-boton {
+      text-align: center;
+    }
+  }
+</style>
+
+<section class="conclusion-box">
+  <div class="conclusion-header">
+    <div class="conclusion-icono">✓</div>
+    <div class="conclusion-titulo">
+      <h2>Conclusión</h2>
+      <p>Del ejemplo guiado a la solución técnica documentada</p>
+    </div>
+  </div>
+
+  <p class="conclusion-texto">
+    Al llegar al final de esta WebQuest, habrás recorrido un proceso completo de
+    análisis, programación, prueba y documentación de sistemas basados en
+    <strong>Arduino UNO</strong>.
+  </p>
+
+  <p class="conclusion-texto">
+    El objetivo no era simplemente hacer funcionar un circuito, sino comprender qué ocurre
+    detrás de cada ejemplo: qué entradas intervienen, qué salidas se controlan, qué periféricos
+    del <strong>ATmega328P</strong> se utilizan y cómo el código en C permite gobernar el
+    comportamiento del hardware.
+  </p>
+
+  <div class="conclusion-destacado">
+    <strong>Pasar del sketch al C</strong> significa ir más allá del ejemplo guiado.
+    Significa analizar, diseñar, justificar, probar, corregir y documentar. Un programa
+    bien construido no solo debe funcionar: también debe poder explicarse, mantenerse y mejorarse.
+  </div>
+
+  <div class="conclusion-grid">
+    <div class="conclusion-card">
+      <h3>Lo que has trabajado</h3>
+      <ul class="conclusion-lista">
+        <li>Entradas y salidas digitales.</li>
+        <li>Lectura analógica mediante ADC.</li>
+        <li>Generación de señales PWM.</li>
+        <li>Temporizadores e interrupciones.</li>
+        <li>Comunicación serie mediante USART.</li>
+        <li>Visualización de datos en LCD.</li>
+        <li>Prueba, depuración y documentación técnica.</li>
+      </ul>
+    </div>
+
+    <div class="conclusion-card">
+      <h3>Lo que has desarrollado</h3>
+      <ul class="conclusion-lista">
+        <li>Capacidad para analizar sistemas programables.</li>
+        <li>Relación entre hardware y software.</li>
+        <li>Diseño de algoritmos antes de programar.</li>
+        <li>Interpretación de código en C.</li>
+        <li>Trabajo cooperativo en proyectos técnicos.</li>
+        <li>Comunicación y defensa de soluciones.</li>
+        <li>Reflexión sobre errores y mejoras.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="conclusion-bloque-titulo">Síntesis del aprendizaje</h3>
+
+  <p class="conclusion-texto">
+    A lo largo de las actividades has comprobado que programar no consiste únicamente
+    en escribir instrucciones. Programar sistemas físicos implica comprender señales,
+    registros, puertos, periféricos, sensores, actuadores, tiempos de respuesta y condiciones
+    de funcionamiento.
+  </p>
+
+  <div class="conclusion-tags">
+    <span class="conclusion-tag">Arduino UNO</span>
+    <span class="conclusion-tag">ATmega328P</span>
+    <span class="conclusion-tag">ANSI C</span>
+    <span class="conclusion-tag">ADC</span>
+    <span class="conclusion-tag">PWM</span>
+    <span class="conclusion-tag">TIMER0</span>
+    <span class="conclusion-tag">TIMER1</span>
+    <span class="conclusion-tag">INT0</span>
+    <span class="conclusion-tag">USART</span>
+    <span class="conclusion-tag">LCD</span>
+    <span class="conclusion-tag">Sensores</span>
+    <span class="conclusion-tag">Actuadores</span>
+    <span class="conclusion-tag">Depuración</span>
+    <span class="conclusion-tag">Documentación técnica</span>
+  </div>
+
+  <h3 class="conclusion-bloque-titulo">Relación con la informática industrial</h3>
+
+  <div class="conclusion-tabla-contenedor">
+    <table class="conclusion-tabla">
+      <thead>
+        <tr>
+          <th>Aprendizaje</th>
+          <th>Aplicación técnica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="conclusion-etiqueta">Programación en C</td>
+          <td>Permite controlar sistemas programables de forma estructurada y cercana al hardware.</td>
+        </tr>
+        <tr>
+          <td class="conclusion-etiqueta">Entradas y salidas</td>
+          <td>Facilitan la interacción con sensores, pulsadores, LEDs, motores, zumbadores y pantallas.</td>
+        </tr>
+        <tr>
+          <td class="conclusion-etiqueta">ADC y PWM</td>
+          <td>Permiten medir señales analógicas y generar respuestas variables como sonido, luz o movimiento.</td>
+        </tr>
+        <tr>
+          <td class="conclusion-etiqueta">Temporizadores e interrupciones</td>
+          <td>Ayudan a gestionar eventos, secuencias, tiempos de espera y respuestas automáticas.</td>
+        </tr>
+        <tr>
+          <td class="conclusion-etiqueta">Comunicación serie</td>
+          <td>Permite intercambiar datos entre el microcontrolador y un ordenador u otro sistema externo.</td>
+        </tr>
+        <tr>
+          <td class="conclusion-etiqueta">Documentación técnica</td>
+          <td>Hace posible explicar, revisar, mejorar y defender una solución programada.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="conclusion-bloque-titulo">Reflexión final</h3>
+
+  <p class="conclusion-texto">
+    Antes de cerrar la WebQuest, responde individualmente a estas preguntas. Te ayudarán
+    a valorar qué has aprendido y cómo podrías aplicar este conocimiento en nuevos proyectos.
+  </p>
+
+  <ol class="conclusion-preguntas">
+    <li>¿Qué actividad te ha ayudado más a comprender la relación entre software y hardware?</li>
+    <li>¿Qué periférico del ATmega328P te ha resultado más interesante: ADC, TIMER, PWM, USART, INT0 u otro?</li>
+    <li>¿Qué diferencia encuentras ahora entre copiar un sketch y comprender un programa en C?</li>
+    <li>¿Qué error o dificultad te ha ayudado más a aprender?</li>
+    <li>¿Qué parte del proceso te ha resultado más importante: análisis, algoritmo, programación, prueba o documentación?</li>
+    <li>¿Qué mejorarías de tu código o de tu forma de trabajar en equipo?</li>
+    <li>¿Cómo podrías aplicar lo aprendido en un sistema automatizado real?</li>
+    <li>¿Qué actividad ampliarías o modificarías para crear un proyecto propio?</li>
+  </ol>
+
+  <h3 class="conclusion-bloque-titulo">Mirando hacia el futuro</h3>
+
+  <div class="conclusion-futuro">
+    <strong>Los ejemplos trabajados durante la WebQuest son un punto de partida.</strong>
+    <br><br>
+    A partir de ellos podrías diseñar sistemas más completos: una estación de medida,
+    un control de temperatura, una interfaz de usuario, un sistema de alarma, un controlador
+    de motores o un dispositivo que se comunique con un ordenador.
+    <br><br>
+    Cada nuevo proyecto seguirá necesitando el mismo proceso: analizar el problema, diseñar
+    el algoritmo, programar, probar, depurar y documentar.
+  </div>
+
+  <div class="conclusion-frase-final">
+    <h3>Has pasado del sketch al C</h3>
+    <p>
+      Ahora ya no ves Arduino UNO únicamente como una placa para cargar ejemplos.
+      Lo ves como un sistema programable en el que cada pin, cada registro, cada interrupción
+      y cada línea de código tienen una función concreta.
+      <br><br>
+      Has pasado de ejecutar ejemplos a comprender cómo se construyen soluciones técnicas.
+    </p>
+  </div>
+
+  <div class="conclusion-botones">
+    <a class="conclusion-boton" href="https://sites.google.com/view/delsketchalc/inicio" target="_top">
+      Volver al inicio
+    </a>
+
+    <a class="conclusion-boton conclusion-boton-secundario" href="https://sites.google.com/view/delsketchalc/actividades" target="_top">
+      Revisar actividades
+    </a>
+
+    <a class="conclusion-boton conclusion-boton-secundario" href="https://sites.google.com/view/delsketchalc/evaluaci%C3%B3n" target="_top">
+      Ver evaluación
+    </a>
+  </div>
+</section>
